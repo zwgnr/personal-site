@@ -1,0 +1,13 @@
+---
+import Nav from "../components/Nav.astro";
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+---
+
+<Layout title="projects">
+    <div>Projects!</div>
+    <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <Card title="Percentage Calculator" description="blah blah blah" techOne="javascript" />
+      <Card title="CakePopUI" description="Design System/UI Kit" techOne="javascript" />
+    </ul>
+</Layout>

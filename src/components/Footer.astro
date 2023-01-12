@@ -1,1 +1,31 @@
-<div>Hey!</div>
+---
+import { Icon } from "astro-icon";
+---
+
+<footer
+  class=" flex h-[10vh] w-[100vw] items-center justify-center bg-slate-200 dark:bg-slate-800">
+  <a
+    href="https://github.com/zwagnr"
+    class="inline-block rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+    aria-label="zwagnr Github">
+    <Icon name="jam:github" class="w-8 h-8" />
+  </a>
+  <a
+    href="https://github.com/zwagnr"
+    class="inline-block rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+    aria-label="zwagnr Twitter">
+    <Icon name="jam:twitter" class="w-8 h-8" />
+  </a>
+  <a
+    href="https://github.com/zwagnr"
+    class="inline-block rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+    aria-label="zwagnr discord">
+    <Icon name="jam:discord" class="w-8 h-8" />
+  </a>
+</footer>
+
+<style lang="css">
+  [astro-icon="jam:github"]:hover {
+    color: orange;
+  }
+</style>

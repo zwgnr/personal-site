@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script type="module">
+      const defaultTheme = "light";
+
+      const n = "theme",
+        m = window.matchMedia("(prefers-color-scheme: dark)");
+      function r() {
+        return m.matches ? "dark" : defaultTheme;
+      }
+      function a(e) {
+        const o = e !== void 0 ? e : localStorage.getItem(n);
+        return o != null ? o : r();
+      }
+      function t(e) {
+        document.documentElement.setAttribute("data-theme", e),
+          (document.documentElement.style.colorScheme = e);
+      }
+      function d(e) {
+        e.key === n && t(a(e.newValue));
+      }
+      function l() {
+        t(a());
+      }
+      function h(e) {
+        e.detail
+          ? (localStorage.setItem(n, e.detail), t(e.detail))
+          : (localStorage.removeItem(n), t(a(e.detail)));
+      }
+      document.addEventListener("set-theme", h),
+        window.addEventListener("storage", d),
+        m.addEventListener("change", l),
+        t(a());
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="Personal Portfolio Website for Zach Wagner"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content="Astro v1.9.0" />
+    <title>projects</title>
+    <link rel="stylesheet" href="/assets/about.8a908368.css" />
+    <link rel="stylesheet" href="/assets/projects.caa37a85.css" />
+  </head>
+
+  <body>
+    <main>
+      <script src="/ThemeSwitcher.js"></script>
+
+      <header
+        class="sticky top-0 z-40 mx-auto w-full flex-none bg-white dark:bg-slate-900 md:bg-white/90 md:backdrop-blur-sm dark:md:bg-slate-900/90"
+        id="header"
+      >
+        <div
+          class="mx-auto w-full max-w-6xl py-3 px-3 md:flex md:justify-between md:px-4"
+        >
+          <div class="flex justify-between">
+            <a class="flex items-center" href="/"> Zach Wagner</a>
+            <div class="flex items-center md:hidden"></div>
+          </div>
+          <nav
+            class="hidden h-[calc(100vh-100px)] w-full items-center overflow-y-auto text-gray-600 dark:text-slate-200 md:flex md:h-auto md:w-auto md:overflow-visible"
+            aria-label="Main navigation"
+          >
+            <ul
+              class="flex w-full flex-col pt-8 text-xl md:w-auto md:flex-row md:self-center md:pt-0 md:text-base"
+            >
+              <li class="dropdown">
+                <a
+                  class="flex items-center px-4 py-3 font-medium transition duration-150 ease-in-out hover:text-gray-900 dark:hover:text-white"
+                  href="/about/"
+                  >About
+                </a>
+              </li>
+              <li>
+                <a
+                  class="flex items-center px-4 py-3 font-medium transition duration-150 ease-in-out hover:text-gray-900 dark:hover:text-white"
+                  href="/projects/"
+                  >Projects
+                </a>
+              </li>
+              <li class="md:hidden">
+                <a
+                  class="flex items-center px-4 py-3 font-bold transition duration-150 ease-in-out hover:text-gray-900 dark:hover:text-white"
+                  href="https://github.com/onwidget/astrowind"
+                  >Github
+                </a>
+              </li>
+            </ul>
+            <!-- <div class='flex align-middle justify-center w-6'><ToggleButton client:only /></div> -->
+            <button
+              id="theme-btn"
+              title="Theme Switcher"
+              onclick="handleThemeSwitch()"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                id="moon-svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="h-6 w-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+                ></path>
+              </svg>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                id="sun-svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="h-6 w-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                ></path>
+              </svg>
+            </button>
+          </nav>
+        </div>
+      </header>
+      <div>Projects!</div>
+      <ul role="list" class="link-card-grid">
+        <li class="link-card astro-X2EO2VDQ">
+          <a href="https://docs.astro.build/" class="astro-X2EO2VDQ">
+            <h2 class="astro-X2EO2VDQ">
+              Documentation
+              <span class="astro-X2EO2VDQ">&rarr;</span>
+            </h2>
+            <p class="astro-X2EO2VDQ">
+              Learn how Astro works and explore the official API docs.
+            </p>
+          </a>
+        </li>
+
+        <li class="link-card astro-X2EO2VDQ">
+          <a href="https://astro.build/integrations/" class="astro-X2EO2VDQ">
+            <h2 class="astro-X2EO2VDQ">
+              Integrations
+              <span class="astro-X2EO2VDQ">&rarr;</span>
+            </h2>
+            <p class="astro-X2EO2VDQ">
+              Supercharge your project with new frameworks and libraries.
+            </p>
+          </a>
+        </li>
+
+        <li class="link-card astro-X2EO2VDQ">
+          <a href="https://astro.build/themes/" class="astro-X2EO2VDQ">
+            <h2 class="astro-X2EO2VDQ">
+              Themes
+              <span class="astro-X2EO2VDQ">&rarr;</span>
+            </h2>
+            <p class="astro-X2EO2VDQ">
+              Explore a galaxy of community-built starter themes.
+            </p>
+          </a>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>
