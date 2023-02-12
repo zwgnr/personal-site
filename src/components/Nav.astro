@@ -1,52 +1,20 @@
 ---
 import { Icon } from "astro-icon";
+import Menu from "./Menu";
 ---
 
 <script is:inline src="/ThemeSwitcher.js"></script>
 
-<header
-  class="sticky top-0 mx-auto z-10 h-[10vh] w-full bg-slate-200 py-3 px-8 dark:bg-slate-800 md:flex md:justify-between ">
-  <div class="flex justify-between">
-    <a class="flex items-center" href="/"> Zach Wagner</a>
-    <div class="flex items-center md:hidden"></div>
-  </div>
-  <nav
-    class="hidden w-full items-center overflow-y-auto dark:text-slate-200 md:flex md:h-auto md:w-auto md:overflow-visible"
-    aria-label="Main navigation">
-    <ul
-      class="flex w-full flex-col pt-8 text-xl md:w-auto md:flex-row md:self-center md:pt-0 md:text-base">
-      <li class="dropdown">
-        <a
-          class="flex items-center px-4 py-3 font-medium transition duration-150 ease-in-out hover:text-gray-900 dark:hover:text-white"
-          href="/about/"
-          >About
-        </a>
-      </li>
-      <li>
-        <a
-          class="flex items-center px-4 py-3 font-medium transition duration-150 ease-in-out hover:text-gray-900 dark:hover:text-white"
-          href="/projects/"
-          >Projects
-        </a>
-      </li>
-      <li>
-        <a
-          class="flex items-center px-4 py-3 font-medium transition duration-150 ease-in-out hover:text-gray-900 dark:hover:text-white"
-          href="/contact/"
-          >Contact
-        </a>
-      </li>
-    </ul>
-    <button
-      id="theme-btn"
-      title="Theme Switcher"
-      class="rounded bg-slate-400 p-2 outline-none ring-blue-500 focus-visible:ring-4 focus-visible:ring-offset-0 dark:bg-gray-500"
-      onclick="handleThemeSwitch()">
-      <Icon name="ph:moon-bold" class="w-5 h-5" />
-      <Icon name="ph:sun-bold" class="w-5 h-5" />
-    </button>
-  </nav>
-</header>
+<Menu client:only="react">
+  <button
+    id="theme-btn"
+    title="Theme Switcher"
+    class="rounded bg-slate-400 p-2 outline-none ring-blue-500 focus-visible:ring-4 focus-visible:ring-offset-0 dark:bg-gray-500"
+    onclick="handleThemeSwitch()">
+    <Icon name="ph:moon-bold" class="w-5 h-5" />
+    <Icon name="ph:sun-bold" class="w-5 h-5" />
+  </button>
+</Menu>
 
 <style lang="css">
   [astro-icon="ph:moon-bold"]:hover {
