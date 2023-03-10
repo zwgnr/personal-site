@@ -3,19 +3,16 @@ export interface Props {
   title: string;
   description: string;
   techOne: string;
+  img: string;
 }
 
-const { title, description, techOne } = Astro.props;
+const { title, description, techOne, img } = Astro.props;
 ---
 
-<li
-  class="col-span-2 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow">
-  <div class="flex flex-1 flex-col pb-4">
-    <img
-      class="h-48 rounded-t-lg"
-      src="https://images.unsplash.com/photo-1506477331477-33d5d8b3dc85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1334&q=80"
-      alt=""
-    />
+<button
+  class="w-96 transform cursor-pointer divide-y divide-gray-200 rounded-lg bg-slate-200 text-center shadow duration-500 hover:-translate-y-2 hover:shadow-xl">
+  <div class="flex flex-col p-8">
+    <img class="h-48" src={img} alt="" />
     <h3 class="mt-4 text-sm font-medium text-gray-900">{title}</h3>
     <dl class="mt-1 flex flex-grow flex-col justify-between">
       <dt class="sr-only">Title</dt>
@@ -29,7 +26,7 @@ const { title, description, techOne } = Astro.props;
     </dl>
   </div>
   <div>
-    <div class="-mt-px flex divide-x divide-gray-200">
+    <div class="-mt-px flex divide-x divide-slate-800">
       <div class="flex w-0 flex-1">
         <a
           href="mailto:janecooper@example.com"
@@ -67,4 +64,4 @@ const { title, description, techOne } = Astro.props;
       </div>
     </div>
   </div>
-</li>
+</button>
