@@ -5,9 +5,13 @@ import Card from "../components/Card.astro";
 ---
 
 <Layout title="projects">
-    <div>Projects!</div>
-    <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      <Card title="Percentage Calculator" description="blah blah blah" techOne="javascript" />
+  <div class="flex w-full max-w-7xl flex-col justify-center">
+    <h1 class="flex w-full justify-center text-xl p-4">Selected Projects</h1>
+    <ul
+      role="list"
+      class="grid grid-cols-1 gap-6 dark:bg-red-200 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <Card title="Vital View" description="blah blah blah" techOne="javascript" />
       <Card title="CakePopUI" description="Design System/UI Kit" techOne="javascript" />
     </ul>
+  </div>
 </Layout>

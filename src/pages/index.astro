@@ -1,12 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Socials from "../components/socials.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-  <div class="justify-centerp-6 flex h-[100%] w-[60vw] flex-col items-center">
-    <div class="flex flex-col items-center justify-center">
-      <h1 class="m-0 text-6xl font-extrabold">
-        Hi, I'm <span class="text-gradient">Zach</span>
+  <div class="mt-12 flex h-[100%] w-full max-w-4xl flex-col p-6">
+    <div class="flex flex-col">
+      <h1 class="m-0 text-4xl font-extrabold">
+        Hi, I'm <span class="">Zach</span>
       </h1>
     </div>
 
@@ -15,13 +16,13 @@ import Layout from "../layouts/Layout.astro";
       solutions. I am always open to new opportunities and excited to take on new challenges.
     </p>
 
-    <p class="mt-10">
+    <p class="mt-6">
       While you're here, feel free to checkout some more <a href="/about/" class="underline"
         >About</a
       >
       me and some of my selected <a href="/projects/" class="underline">Projects</a>.
     </p>
-    <button class="mt-10 w-[100px] rounded-md bg-blue-400 p-2">Let's Talk</button>
+    <Socials />
   </div>
 </Layout>
 
