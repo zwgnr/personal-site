@@ -2,35 +2,44 @@
 import { Icon } from "astro-icon";
 ---
 
-<div class="flex h-24 w-full items-center justify-start bg-slate-200 dark:bg-slate-800">
+<div class="flex h-24 w-full items-center justify-start bg-slate-100 dark:bg-slate-800">
   <a
     href="https://github.com/zwagnr"
-    class="inline-block rounded-lg p-2.5 text-sm text-gray-500 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400"
+    class="mr-4 inline-block rounded-lg text-gray-500 placeholder:text-sm hover:scale-125 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400"
     aria-label="zwagnr Github">
-    <Icon name="jam:github" class="w-8 h-8" />
+    <Icon name="bytesize:github" class="w-8 h-8" />
   </a>
   <a
     href="https://github.com/zwagnr"
-    class="inline-block rounded-lg p-2.5 text-sm text-gray-500 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+    class="mr-4 inline-block rounded-lg text-sm text-gray-500 hover:scale-125 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:focus:ring-gray-700"
     aria-label="zwagnr Twitter">
-    <Icon name="jam:twitter" class="w-8 h-8" />
+    <Icon name="mdi:twitter" class="w-8 h-8" />
   </a>
   <a
     href="https://github.com/zwagnr"
-    class="inline-block rounded-lg p-2.5 text-sm text-gray-500 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+    class="mr-4 inline-block rounded-lg text-sm text-gray-500 hover:scale-125 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:focus:ring-gray-700"
     aria-label="zwagnr discord">
-    <Icon name="jam:discord" class="w-8 h-8" />
+    <Icon name="ic:baseline-discord" class="w-8 h-8" />
+  </a>
+  <a
+    href="https://github.com/zwagnr"
+    class="mr-4 inline-block rounded-lg text-sm text-gray-500 hover:scale-125 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:focus:ring-gray-700"
+    aria-label="zwagnr discord">
+    <Icon name="mdi:email-outline" class="w-8 h-8" />
   </a>
 </div>
 
 <style lang="css">
-  [astro-icon="jam:github"]:hover {
+  [astro-icon="bytesize:github"]:hover {
     color: orange;
   }
-  [astro-icon="jam:twitter"]:hover {
+  [astro-icon="mdi:twitter"]:hover {
     color: skyblue;
   }
-  [astro-icon="jam:discord"]:hover {
-    color: indigo;
+  [astro-icon="ic:baseline-discord"]:hover {
+    color: rgb(59, 32, 128);
+  }
+  [astro-icon="mdi:email-outline"]:hover {
+    color: red;
   }
 </style>

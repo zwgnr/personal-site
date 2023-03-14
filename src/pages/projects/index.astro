@@ -1,0 +1,60 @@
+---
+import Nav from "../../components/Nav.astro";
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+---
+
+<Layout title="projects">
+  <div class="flex w-full max-w-6xl flex-col justify-start overflow-auto">
+    <h1 class="flex w-full justify-center text-xl">Selected Projects</h1>
+    <div class="flex w-full flex-row flex-wrap justify-center gap-6 p-8">
+      <Card
+        title="Vital View"
+        description="A data analytics dashboard for your most important health metrics. Sign in with Oura Ring."
+        tags={[
+          "vscode-icons:file-type-typescript-official",
+          "logos:react",
+          "simple-icons:nextdotjs",
+          "logos:tailwindcss-icon",
+          "logos:swr",
+          "logos:oauth",
+          "tabler:brand-vercel",
+        ]}
+        img={"/vitalview.png"}
+        info={"/projects/vitalView"}
+        live={"https://vitalview.app/"}
+        github={"https://github.com/zwagnr/vital-view"}
+      />
+      <Card
+        title="CakePopUI"
+        description="Design System/UI Kit. Built on top of Vanilla Extract, Radix Primatives & ReactAria."
+        tags={[
+          "vscode-icons:file-type-typescript-official",
+          "logos:react",
+          "vscode-icons:file-type-vanilla-extract",
+          "logos:turborepo-icon",
+          "vscode-icons:file-type-light-mdx",
+          "logos:npm-icon",
+        ]}
+        img={"/cakepop.png"}
+        info={"/projects/vitalView"}
+        live={"https://cakepop-docs.vercel.app/"}
+        github={"https://github.com/zwagnr/cakepop"}
+      />
+      <Card
+        title="Parallel TCG Deck Builder"
+        description="Parallel TCG Deck Builder"
+        tags={[
+          "vscode-icons:file-type-typescript-official",
+          "logos:react",
+          "simple-icons:nextdotjs",
+          "logos:tailwindcss-icon",
+        ]}
+        img={"/vv.png"}
+        info={"/projects/vitalView"}
+        live={"https://vitalview.app/"}
+        github={"https://github.com/zwagnr/vital-view"}
+      />
+    </div>
+  </div>
+</Layout>

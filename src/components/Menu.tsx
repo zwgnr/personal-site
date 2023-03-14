@@ -1,6 +1,8 @@
 import { Fragment } from "react";
+import type { ReactNode } from "react";
 import { Disclosure, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { clsx } from "clsx";
 
 const navigation = [
   { name: "Home", href: "/", current: false },
@@ -8,16 +10,17 @@ const navigation = [
   { name: "About", href: "/about", current: false },
 ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
+export interface MenuProps {
+  children: ReactNode;
+  url: string;
 }
 
-export default function Menu({ children, url }) {
+export default function Menu({ children, url }: MenuProps) {
   return (
-    <Disclosure as="nav" className="min-h-[10vh] bg-slate-200 dark:bg-gray-800">
+    <Disclosure as="nav" className="min-h-[10vh] bg-slate-100 dark:bg-slate-800">
       {({ open }) => (
-        <div className={open ? "fixed h-screen w-full bg-gray-800 " : null}>
-          <div className="mx-auto max-w-6xl py-8 px-2 sm:px-6 lg:px-8">
+        <div className={open ? "fixed h-screen w-full bg-slate-100 dark:bg-slate-800 " : ""}>
+          <div className="mx-auto  py-6 px-10">
             <div className="relative flex h-16 items-center justify-between">
               <div className="flex flex-1 items-center justify-between sm:items-stretch sm:justify-between ">
                 <div className=" flex items-center sm:hidden">
@@ -41,16 +44,16 @@ export default function Menu({ children, url }) {
                   </a>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4 rounded-xl bg-slate-300 p-2">
+                  <div className="flex space-x-4 ">
                     {navigation.map((item) => (
                       <a
                         key={item.name}
                         href={item.href}
-                        className={classNames(
+                        className={clsx(
                           item.href === url
-                            ? "bg-slate-900 text-white"
-                            : "text-gray-800 hover:bg-gray-700 hover:text-white dark:text-gray-100",
-                          "rounded-md px-3 py-2 text-sm font-medium"
+                            ? "border-b-2"
+                            : "text-gray-800 hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
+                          "border-black px-3 py-2 text-lg font-medium dark:border-white"
                         )}
                         aria-current={item.current ? "page" : undefined}>
                         {item.name}
@@ -72,9 +75,9 @@ export default function Menu({ children, url }) {
                   key={item.name}
                   as="a"
                   href={item.href}
-                  className={classNames(
+                  className={clsx(
                     item.current
-                      ? "bg-gray-900 text-white"
+                      ? "bg-gray-900 text-white "
                       : "text-gray-300 hover:bg-gray-700 hover:text-white",
                     "block rounded-md px-3 py-2 text-base font-medium"
                   )}

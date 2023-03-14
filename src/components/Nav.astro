@@ -5,11 +5,11 @@ import Menu from "./Menu";
 
 <script is:inline src="/ThemeSwitcher.js"></script>
 
-<Menu url={Astro.url.pathname} client:only="react">
+<Menu url={Astro.url.pathname}>
   <button
     id="theme-btn"
     title="Theme Switcher"
-    class="rounded bg-slate-300 p-2 outline-none ring-blue-500 focus-visible:ring-4 focus-visible:ring-offset-0 dark:bg-gray-500"
+    class="rounded outline-none ring-blue-500 focus-visible:ring-4 focus-visible:ring-offset-0"
     onclick="handleThemeSwitch()">
     <Icon name="ph:moon-bold" class="w-8 h-8" />
     <Icon name="ph:sun-bold" class="w-8 h-8" />
