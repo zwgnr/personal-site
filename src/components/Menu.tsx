@@ -6,8 +6,9 @@ import { clsx } from "clsx";
 
 const navigation = [
   { name: "Home", href: "/", current: false },
-  { name: "Projects", href: "/projects", current: false },
   { name: "About", href: "/about", current: false },
+  { name: "Projects", href: "/projects", current: false },
+  { name: "Contact", href: "/contact", current: false },
 ];
 
 export interface MenuProps {
@@ -52,7 +53,7 @@ export default function Menu({ children, url }: MenuProps) {
                         className={clsx(
                           item.href === url
                             ? "border-b-2"
-                            : "text-gray-800 hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
+                            : "text-gray-800 rounded-xl hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
                           "border-black px-3 py-2 text-lg font-medium dark:border-white"
                         )}
                         aria-current={item.current ? "page" : undefined}>

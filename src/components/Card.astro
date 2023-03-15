@@ -4,7 +4,6 @@ import { Icon } from "astro-icon";
 export interface Props {
   title: string;
   description: string;
-  tags: string[];
   img: string;
   info: string;
   live: string;
@@ -19,14 +18,11 @@ const { title, description, tags, img, info, live, github } = Astro.props;
   class="duration-400 h-56 w-full cursor-pointer rounded-lg bg-slate-100 shadow-md transition ease-in-out sm:w-2/3 sm:hover:-translate-y-1 sm:hover:shadow-2xl">
   <div class="flex h-full w-full flex-row p-6">
     <div class="flex h-full w-36 items-center justify-center">
-      <img class="w-36" src={img} alt="" />
+      <img class="w-full" src={img} alt="" />
     </div>
-    <div class="flex h-full w-4/5 flex-col items-start justify-between p-4">
+    <div class="flex h-full w-4/5 flex-col items-start justify-center p-4">
       <h1 class="w-full text-3xl text-gray-900">{title}</h1>
       <div class="text-md w-full text-start text-gray-500">{description}</div>
-      <div class="flex w-full justify-start gap-2 p-2">
-        {tags.map((tag) => <Icon name={tag} class="h-8 w-8" />)}
-      </div>
     </div>
   </div>
 </a>
