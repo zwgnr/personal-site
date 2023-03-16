@@ -1,15 +1,190 @@
 ---
+import { Icon } from "astro-icon";
+import Contact from "../components/Contact";
 import Socials from "../components/socials.astro";
 import Layout from "../layouts/Layout.astro";
+import sgMail from "@sendgrid/mail";
+import Particles from "astro-particles";
+import type { ISourceOptions } from "tsparticles-engine";
+
+const baseEmitterConfig = (direction, position) => {
+  return {
+    direction,
+    life: {
+      duration: 0.2,
+      count: 10,
+    },
+    rate: {
+      quantity: 15,
+      delay: 0.1,
+    },
+    size: {
+      width: 0,
+      height: 0,
+    },
+    spawnColor: {
+      value: "#ff0000",
+      animation: {
+        h: {
+          enable: true,
+          offset: {
+            min: -1.4,
+            max: 1.4,
+          },
+          speed: 2,
+          sync: false,
+        },
+        l: {
+          enable: true,
+          offset: {
+            min: 40,
+            max: 60,
+          },
+          speed: 0,
+          sync: false,
+        },
+      },
+    },
+    position,
+  };
+};
+
+const options: ISourceOptions = {
+  //background: {
+  // color: "#000",
+  // },
+  fullScreen: { zIndex: 0 },
+  //style: { height: 0, width: 0 },
+  particles: {
+    angle: {
+      value: 0,
+      offset: 30,
+    },
+    move: {
+      enable: true,
+      outModes: {
+        top: "none",
+        default: "destroy",
+      },
+      gravity: {
+        enable: true,
+      },
+      speed: { min: 20, max: 40 },
+      decay: 0.01,
+    },
+    number: {
+      value: 0,
+      limit: 500,
+    },
+    opacity: {
+      value: 1,
+    },
+    shape: {
+      type: ["circle", "square", "triangle"],
+    },
+    size: {
+      value: { min: 2, max: 5 },
+      animation: {
+        count: 1,
+        startValue: "min",
+        enable: true,
+        speed: 5,
+        sync: true,
+      },
+    },
+    rotate: {
+      value: {
+        min: 0,
+        max: 360,
+      },
+      direction: "random",
+      animation: {
+        enable: true,
+        speed: 60,
+      },
+    },
+    tilt: {
+      direction: "random",
+      enable: true,
+      value: {
+        min: 0,
+        max: 360,
+      },
+      animation: {
+        enable: true,
+        speed: 60,
+      },
+    },
+    roll: {
+      darken: {
+        enable: true,
+        value: 25,
+      },
+      enable: true,
+      speed: {
+        min: 15,
+        max: 25,
+      },
+    },
+    wobble: {
+      distance: 30,
+      enable: true,
+      speed: {
+        min: -15,
+        max: 15,
+      },
+    },
+  },
+  emitters: [],
+};
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const name = data.get("name");
+    const email = data.get("email");
+    const phone = data.get("phone");
+    const formMessage = data.get("message");
+
+    const message = {
+      to: "zachwagner@hey.com",
+      from: "zachwagner@hey.com",
+      subject: "New message from contact form",
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${formMessage}`,
+    };
+    sgMail.setApiKey(import.meta.env.SENDGRID_API_KEY);
+    await sgMail.send(message);
+
+    await options.emitters.push(
+      baseEmitterConfig("top-right", { x: 0, y: 30 }),
+      baseEmitterConfig("top-left", { x: 100, y: 30 })
+    );
+    //console.log(ISourceOptions);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
 ---
 
+<script>
+  import { tsParticles } from "tsparticles-engine";
+  import { loadFull } from "tsparticles";
+
+  (async () => {
+    await loadFull(tsParticles);
+  })();
+</script>
+
 <Layout title="contact">
-  <div class="relative bg-white">
+  <div class="relative">
     <div class="absolute inset-0">
-      <div class="absolute inset-y-0 left-0 w-1/2 bg-gray-50"></div>
+      <Particles id="tsparticles" options={options} />
+      <div class="absolute inset-y-0 left-0 w-1/2"></div>
     </div>
-    <div class="relative mx-auto max-w-7xl lg:grid lg:grid-cols-5">
-      <div class="bg-gray-50 py-16 px-4 sm:px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12">
+    <div class="relative mx-auto h-fit max-w-7xl rounded-xl shadow-xl lg:grid lg:grid-cols-5">
+      <div class="py-16 px-4 sm:px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12">
         <div class="mx-auto max-w-lg">
           <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
             Get in touch
@@ -19,34 +194,6 @@ import Layout from "../layouts/Layout.astro";
             Sapien tortor lacus arcu.
           </p>
           <dl class="mt-8 text-base text-gray-500">
-            <div>
-              <dt class="sr-only">Postal address</dt>
-              <dd>
-                <p>742 Evergreen Terrace</p>
-                <p>Springfield, OR 12345</p>
-              </dd>
-            </div>
-            <div class="mt-6">
-              <dt class="sr-only">Phone number</dt>
-              <dd class="flex">
-                <!-- Heroicon name: outline/phone -->
-                <svg
-                  class="h-6 w-6 flex-shrink-0 text-gray-400"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  ></path>
-                </svg>
-                <span class="ml-3"> +1 (555) 123-4567</span>
-              </dd>
-            </div>
             <div class="mt-3">
               <dt class="sr-only">Email</dt>
               <dd class="flex">
@@ -69,23 +216,22 @@ import Layout from "../layouts/Layout.astro";
               </dd>
             </div>
           </dl>
-          <p class="mt-6 text-base text-gray-500">
-            <Socials />
-          </p>
+          <Socials />
         </div>
       </div>
-      <div class="bg-white py-16 px-4 sm:px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12">
+      <div class="py-16 px-4 sm:px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12">
         <div class="mx-auto max-w-lg lg:max-w-none">
           <form action="#" method="POST" class="grid grid-cols-1 gap-y-6">
             <div>
-              <label for="full-name" class="sr-only">Full name</label>
+              <label for="name" class="sr-only">Name</label>
               <input
                 type="text"
-                name="full-name"
-                id="full-name"
+                name="name"
+                id="name"
                 autocomplete="name"
-                class="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                placeholder="Full name"
+                class="block w-full rounded-md border-transparent py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                placeholder="Name"
+                required
               />
             </div>
             <div>
@@ -95,8 +241,9 @@ import Layout from "../layouts/Layout.astro";
                 name="email"
                 type="email"
                 autocomplete="email"
-                class="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                class="block w-full rounded-md border-transparent py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                 placeholder="Email"
+                required
               />
             </div>
             <div>
@@ -106,7 +253,7 @@ import Layout from "../layouts/Layout.astro";
                 name="phone"
                 id="phone"
                 autocomplete="tel"
-                class="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                class="block w-full rounded-md border-transparent py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                 placeholder="Phone"
               />
             </div>
@@ -116,8 +263,9 @@ import Layout from "../layouts/Layout.astro";
                 id="message"
                 name="message"
                 rows="4"
-                class="block w-full rounded-md border border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                placeholder="Message"></textarea>
+                class="block w-full rounded-md border-transparent py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                placeholder="Message"
+                required></textarea>
             </div>
             <div>
               <button
