@@ -110,21 +110,13 @@ const techStack: TechStack[] = [
       <div class="flex w-full flex-col items-center">
         <p class="mb-4 text-2xl font-bold">Challenges</p>
         <p>
-          One of the hardest parts of this project was managing all the data from the Oura API. The
-          first hurdle was getting the calculations correct. First the correct timeframe had to be
-          set, then the correct format (i.e. seconds to hours), and finally the math. A small
-          libraray called DayJS helped a lot to quickly get the correct timeframes and organize
-          things like what data belongs in what month for the yearly charts.
+          Managing data from the Oura API was challenging, particularly getting calculations correct
+          for the desired timeframe and format. DayJS proved useful for organizing monthly data for
+          yearly charts. Calculating percent changes between periods was also difficult as the
+          timeframe had to be split into two datasets for comparison. By abstracting the period
+          logic into current and prior periods, this was made possible.
         </p>
         <br />
-        <p>
-          The other thing that was a bit tricky was the percent changes between periods. I initially
-          was setting the timeframe for data display (1D, Last 7 Days, etc) from the user chosen
-          option, then displaying that data from there. When trying to impliement the percent
-          changes, I quickly realized I had an issue. I had to abstract the period logic into two
-          parts. Current period, and prior period. This allowed me to have two seperate datasets
-          with the ability to make comparisons between them.
-        </p>
       </div>
     </div>
   </div>

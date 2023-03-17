@@ -1,0 +1,145 @@
+---
+import Nav from "../../components/Nav.astro";
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+import { Icon } from "astro-icon";
+
+export interface TechStack {
+  name: string;
+  icon: string;
+}
+
+const techStack: TechStack[] = [
+  { name: "Typescript", icon: "vscode-icons:file-type-typescript-official" },
+  { name: "React", icon: "logos:react" },
+  { name: "Vanilla Extract", icon: "vscode-icons:file-type-vanilla-extract" },
+  { name: "ReactAria", icon: "ic:baseline-adobe" },
+  { name: "RadixUI", icon: "radix" },
+  { name: "Storybook", icon: "vscode-icons:file-type-storybook" },
+  { name: "TurboRepo", icon: "turbo" },
+  { name: "Vite", icon: "vscode-icons:file-type-vite" },
+  { name: "NPM", icon: "logos:npm-icon" },
+];
+---
+
+<Layout title="projects">
+  <div class="flex w-full max-w-6xl flex-col justify-start overflow-auto p-6">
+    <p class="flex w-full justify-center p-4 text-4xl font-bold">Cakepop UI</p>
+
+    <div class="flex w-full flex-row items-center justify-center gap-4">
+      <div class="flex">
+        <a
+          href="https://github.com/zwagnr/cakepop"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-gray-700 hover:text-gray-500">
+          <Icon name="mdi:github" class="w-6 h-6" />
+          <span class="ml-2">Code</span>
+        </a>
+      </div>
+      <div class="flex">
+        <a
+          href="https://cakepop-docs.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-gray-700 hover:text-gray-500">
+          <Icon name="iconoir:www" class="w-6 h-6" />
+          <span class="ml-2">Live</span>
+        </a>
+      </div>
+    </div>
+    <div class="flex w-full justify-center p-4">
+      <img src="/cakepopDocs.png" class="flex h-full w-3/4 shadow-lg shadow-slate-800" />
+    </div>
+    <div class="w-5xl flex flex-col gap-8">
+      <div class="flex w-full flex-col items-center p-4">
+        <p class="mb-4 text-2xl font-bold">Backstory</p>
+        <div class="flex w-full items-center gap-4">
+          <div class="w-2/3">
+            <p>
+              Over time, I have developed a strong fascination for design systems and component
+              libraries. I set out with the goal to create my own. All the components had to be
+              typesafe, feature rich, and keep accessibility in mind. The goal was also to push the
+              library to NPM so that I would be able to use the library in future profects.
+            </p>
+            <br />
+            <p>
+              While researching CSS solutions to build on top of. I stumbled upon <span
+                ><a
+                  class="underline"
+                  href="https://vanilla-extract.style/"
+                  target="_blank"
+                  rel="noopener noreferrer">Vanilla Extract.</a
+                ></span
+              > VE allows for Zero-runtime Stylesheets in TypeScript. I know, CSS in TS 🤯!? After trying
+              it out, it turned out to be an incredible DX. It was also PERFECT for building a design
+              system/component library. Through the <span
+                ><a
+                  class="underline"
+                  href="https://vanilla-extract.style/documentation/packages/recipes/"
+                  target="_blank"
+                  rel="noopener noreferrer">Recipies</a
+                > & <a
+                  class="underline"
+                  href="https://vanilla-extract.style/documentation/packages/sprinkles/#sprinkles"
+                  target="_blank"
+                  rel="noopener noreferrer">Sprinkles</a
+                > API's,</span
+              > I was able to incorperate multi-variant styles as well as include zero-runtime atomic
+              CSS.
+            </p>
+          </div>
+          <div class="w-1/2">
+            <img src="/ve.png" class="shadow-md shadow-slate-600" />
+          </div>
+        </div>
+      </div>
+      <div class="flex w-full flex-col items-center">
+        <p class="mb-4 w-full text-center text-2xl font-bold">Tech + Key Insights</p>
+        <div class="flex w-full items-center gap-4">
+          <ul class="flex w-1/3 flex-wrap gap-2 rounded-xl p-4 shadow-lg">
+            {
+              techStack.map((tech) => (
+                <li class="flex w-40 items-center gap-2 p-2">
+                  {tech.name === "AuthJS" ? (
+                    <img src="/authJS.png" class="h-10 w-10" />
+                  ) : (
+                    <Icon name={tech.icon} class="h-10 w-10" />
+                  )}
+                  <p>{tech.name}</p>
+                </li>
+              ))
+            }
+          </ul>
+          <div class="w-2/3">
+            <ul class="text-md flex flex-col gap-4">
+              <li>
+                <span class="font-bold">React Aria + RadixUI:</span> I came across this <span
+                  ><a
+                    class="underline"
+                    href="https://www.youtube.com/watch?v=pcMYcjtWwVI"
+                    target="_blank"
+                    rel="noopener noreferrer">video</a
+                  ></span
+                > by Pedro Duarte about the complexity of accessible components. He mentions his team
+                spending over 2000+ hours perfecting a dropdown. Radix/Aria provide unstyled primatives
+                and React Hooks to handle accessibility/behavior functionality.
+              </li>
+              <li>
+                <span class="font-bold">Turbo:</span> ...
+              </li>
+              <li>
+                <span class="font-bold">Vite:</span> ...
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flex w-full flex-col items-center">
+        <p class="mb-4 text-2xl font-bold">Challenges</p>
+        <p>...</p>
+        <br />
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,142 +1,8 @@
 ---
 import { Icon } from "astro-icon";
-import Contact from "../components/Contact";
 import Socials from "../components/socials.astro";
 import Layout from "../layouts/Layout.astro";
 import sgMail from "@sendgrid/mail";
-import Particles from "astro-particles";
-import type { ISourceOptions } from "tsparticles-engine";
-
-const baseEmitterConfig = (direction, position) => {
-  return {
-    direction,
-    life: {
-      duration: 0.2,
-      count: 10,
-    },
-    rate: {
-      quantity: 15,
-      delay: 0.1,
-    },
-    size: {
-      width: 0,
-      height: 0,
-    },
-    spawnColor: {
-      value: "#ff0000",
-      animation: {
-        h: {
-          enable: true,
-          offset: {
-            min: -1.4,
-            max: 1.4,
-          },
-          speed: 2,
-          sync: false,
-        },
-        l: {
-          enable: true,
-          offset: {
-            min: 40,
-            max: 60,
-          },
-          speed: 0,
-          sync: false,
-        },
-      },
-    },
-    position,
-  };
-};
-
-const options: ISourceOptions = {
-  //background: {
-  // color: "#000",
-  // },
-  fullScreen: { zIndex: 0 },
-  //style: { height: 0, width: 0 },
-  particles: {
-    angle: {
-      value: 0,
-      offset: 30,
-    },
-    move: {
-      enable: true,
-      outModes: {
-        top: "none",
-        default: "destroy",
-      },
-      gravity: {
-        enable: true,
-      },
-      speed: { min: 20, max: 40 },
-      decay: 0.01,
-    },
-    number: {
-      value: 0,
-      limit: 500,
-    },
-    opacity: {
-      value: 1,
-    },
-    shape: {
-      type: ["circle", "square", "triangle"],
-    },
-    size: {
-      value: { min: 2, max: 5 },
-      animation: {
-        count: 1,
-        startValue: "min",
-        enable: true,
-        speed: 5,
-        sync: true,
-      },
-    },
-    rotate: {
-      value: {
-        min: 0,
-        max: 360,
-      },
-      direction: "random",
-      animation: {
-        enable: true,
-        speed: 60,
-      },
-    },
-    tilt: {
-      direction: "random",
-      enable: true,
-      value: {
-        min: 0,
-        max: 360,
-      },
-      animation: {
-        enable: true,
-        speed: 60,
-      },
-    },
-    roll: {
-      darken: {
-        enable: true,
-        value: 25,
-      },
-      enable: true,
-      speed: {
-        min: 15,
-        max: 25,
-      },
-    },
-    wobble: {
-      distance: 30,
-      enable: true,
-      speed: {
-        min: -15,
-        max: 15,
-      },
-    },
-  },
-  emitters: [],
-};
 
 if (Astro.request.method === "POST") {
   try {
@@ -154,12 +20,6 @@ if (Astro.request.method === "POST") {
     };
     sgMail.setApiKey(import.meta.env.SENDGRID_API_KEY);
     await sgMail.send(message);
-
-    await options.emitters.push(
-      baseEmitterConfig("top-right", { x: 0, y: 30 }),
-      baseEmitterConfig("top-left", { x: 100, y: 30 })
-    );
-    //console.log(ISourceOptions);
   } catch (error) {
     if (error instanceof Error) {
       console.error(error.message);
@@ -169,18 +29,70 @@ if (Astro.request.method === "POST") {
 ---
 
 <script>
-  import { tsParticles } from "tsparticles-engine";
-  import { loadFull } from "tsparticles";
+  import confetti from "canvas-confetti";
 
-  (async () => {
-    await loadFull(tsParticles);
-  })();
+  // Find form DOM on the page.
+  const form = document.querySelector("[data-confetti-form]") as HTMLFormElement;
+
+  form?.addEventListener("submit", (e) => {
+    // Set a flag in localStorage to remember that the form has been submitted.
+    localStorage.setItem("formSubmitted", "true");
+
+    // Allow the form to submit normally.
+    return true;
+  });
+
+  const count = 200;
+  const defaults = {
+    origin: { y: 0.7 },
+  };
+
+  function fire(
+    particleRatio: number,
+    opts: { spread: number; startVelocity?: number; decay?: number; scalar?: number }
+  ) {
+    confetti(
+      Object.assign({}, defaults, opts, {
+        particleCount: Math.floor(count * particleRatio),
+      })
+    );
+  }
+  // Check if the form has been submitted.
+  const submitted = localStorage.getItem("formSubmitted");
+
+  if (submitted) {
+    // Trigger the confetti animation.
+    fire(0.25, {
+      spread: 26,
+      startVelocity: 55,
+    });
+    fire(0.2, {
+      spread: 60,
+    });
+    fire(0.35, {
+      spread: 100,
+      decay: 0.91,
+      scalar: 0.8,
+    });
+    fire(0.1, {
+      spread: 120,
+      startVelocity: 25,
+      decay: 0.92,
+      scalar: 1.2,
+    });
+    fire(0.1, {
+      spread: 120,
+      startVelocity: 45,
+    });
+
+    // Remove the submitted flag from localStorage.
+    localStorage.removeItem("formSubmitted");
+  }
 </script>
 
 <Layout title="contact">
   <div class="relative">
     <div class="absolute inset-0">
-      <Particles id="tsparticles" options={options} />
       <div class="absolute inset-y-0 left-0 w-1/2"></div>
     </div>
     <div class="relative mx-auto h-fit max-w-7xl rounded-xl shadow-xl lg:grid lg:grid-cols-5">
@@ -221,7 +133,7 @@ if (Astro.request.method === "POST") {
       </div>
       <div class="py-16 px-4 sm:px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12">
         <div class="mx-auto max-w-lg lg:max-w-none">
-          <form action="#" method="POST" class="grid grid-cols-1 gap-y-6">
+          <form data-confetti-form action="#" method="POST" class="grid grid-cols-1 gap-y-6">
             <div>
               <label for="name" class="sr-only">Name</label>
               <input
