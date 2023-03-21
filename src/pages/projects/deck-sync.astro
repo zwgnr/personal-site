@@ -1,0 +1,106 @@
+---
+import Nav from "../../components/Nav.astro";
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+import { Icon } from "astro-icon";
+
+export interface TechStack {
+  name: string;
+  icon: string;
+}
+
+const techStack: TechStack[] = [
+  { name: "Typescript", icon: "vscode-icons:file-type-typescript-official" },
+  { name: "React", icon: "logos:react" },
+  { name: "GQL Request", icon: "vscode-icons:file-type-graphql" },
+  { name: "NextJS", icon: "simple-icons:nextdotjs" },
+  { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
+  { name: "HeadlessUI", icon: "headless" },
+  { name: "ChartJS", icon: "file-icons:chartjs" },
+  { name: "Vercel", icon: "tabler:brand-vercel" },
+];
+---
+
+<Layout title="projects">
+  <div class="flex w-full max-w-6xl flex-col justify-start overflow-auto p-6">
+    <p class="flex w-full justify-center p-4 text-4xl font-bold">Vital View</p>
+
+    <div class="flex w-full flex-row items-center justify-center gap-4">
+      <div class="flex">
+        <a
+          href=""
+          target="_blank"
+          rel="noopener noreferrer"
+          class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-gray-700 hover:text-gray-500">
+          <Icon name="mdi:github" class="w-6 h-6" />
+          <span class="ml-2">Code</span>
+        </a>
+      </div>
+      <div class="flex">
+        <a
+          href=""
+          target="_blank"
+          rel="noopener noreferrer"
+          class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-gray-700 hover:text-gray-500">
+          <Icon name="iconoir:www" class="w-6 h-6" />
+          <span class="ml-2">Live</span>
+        </a>
+      </div>
+    </div>
+    <div class="flex w-full justify-center p-4">
+      <img src="/vvPreview.png" class="flex h-full w-3/4 shadow-lg shadow-slate-800" />
+    </div>
+    <div class="w-5xl flex flex-col gap-8">
+      <div class="flex w-full flex-col items-center p-4">
+        <p class="mb-4 text-2xl font-bold">Backstory</p>
+        <div class="flex w-full items-center gap-4">
+          <div class="w-2/3">
+            <p>...</p>
+            <br />
+            <p>...</p>
+          </div>
+          <div class="w-1/2">
+            <img src="/vvOverviewLight.png" class="shadow-md shadow-slate-600" />
+          </div>
+        </div>
+      </div>
+      <div class="flex w-full flex-col items-center">
+        <p class="mb-4 w-full text-center text-2xl font-bold">Tech + Key Insights</p>
+        <div class="flex w-full items-center gap-4">
+          <ul class="flex w-1/3 flex-wrap gap-2 rounded-xl p-4 shadow-lg">
+            {
+              techStack.map((tech) => (
+                <li class="flex w-40 items-center gap-2 p-2">
+                  {tech.name === "AuthJS" ? (
+                    <img src="/authJS.png" class="h-10 w-10" />
+                  ) : (
+                    <Icon name={tech.icon} class="h-10 w-10" />
+                  )}
+                  <p>{tech.name}</p>
+                </li>
+              ))
+            }
+          </ul>
+          <div class="w-2/3">
+            <ul class="text-md flex flex-col gap-4">
+              <li>
+                <span class="font-bold">GQL Request:</span> ...
+              </li>
+              <li>
+                <span class="font-bold">Tailwind:</span> ...
+                <li>
+                  <span class="font-bold">ChartJS:</span> ...
+                </li>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="flex w-full flex-col items-center">
+          <p class="mb-4 text-2xl font-bold">Challenges</p>
+          <p>..</p>
+          <br />
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
