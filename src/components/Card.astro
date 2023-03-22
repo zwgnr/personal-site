@@ -15,14 +15,14 @@ const { title, description, tags, img, info, live, github } = Astro.props;
 
 <a
   href={info}
-  class="duration-400 h-56 w-full cursor-pointer rounded-lg bg-slate-100 shadow-md transition ease-in-out sm:w-2/3 sm:hover:-translate-y-1 sm:hover:shadow-2xl">
+  class="duration-400 h-56 w-full cursor-pointer rounded-md border-2 bg-slate-100 shadow-md transition ease-in-out dark:border-neutral-400 dark:bg-transparent sm:w-2/3 sm:hover:-translate-y-1 sm:hover:shadow-2xl">
   <div class="flex h-full w-full flex-row p-6">
     <div class="flex h-full w-36 items-center justify-center">
       <img class="w-full" src={img} alt="" />
     </div>
     <div class="flex h-full w-4/5 flex-col items-start justify-center p-4">
-      <h1 class="w-full text-3xl text-gray-900">{title}</h1>
-      <div class="text-md w-full text-start text-gray-500">{description}</div>
+      <h1 class="w-full text-3xl text-gray-900 dark:text-white">{title}</h1>
+      <div class="text-md w-full text-start text-gray-500 dark:text-neutral-400">{description}</div>
     </div>
   </div>
 </a>

@@ -6,84 +6,69 @@ import { Astronav, MenuItems, MenuIcon, Dropdown, DropdownItems } from "astro-na
 
 <script is:inline src="/ThemeSwitcher.js"></script>
 
-<header class="dark:bg-slate z-10 min-h-[10vh] bg-slate-100 dark:bg-slate-800">
-  <div class="mx-auto py-6 px-10">
-    <div class="relative flex flex-col items-start justify-between sm:flex-row sm:items-center">
-      <Astronav
-        class="flex flex-1 items-center justify-between sm:items-stretch sm:justify-between">
-        <div class="flex w-full items-center justify-between sm:w-auto">
-          <p class="hidden text-lg lg:block">ZW</p>
-          <div class="block lg:hidden">
-            <MenuIcon class="w-6 h-6 text-gray-800" />
-          </div>
-          <p class="sm:hidden">ZW</p>
-          <button
-            id="theme-btn"
-            title="Theme Switcher"
-            class="rounded outline-none ring-blue-500 focus-visible:ring-4 focus-visible:ring-offset-0 sm:hidden"
-            onclick="handleThemeSwitch()">
-            <Icon name="ph:moon-bold" class="w-8 h-8" />
-            <Icon name="ph:sun-bold" class="w-8 h-8" />
-          </button>
-        </div>
-        <MenuItems class="hidden lg:flex">
-          <div class="flex flex-col lg:flex-row lg:gap-5">
-            <a
-              href="/"
-              class={clsx(
-                Astro.url.pathname === "/"
-                  ? "border-b-2"
-                  : "text-gray-800 rounded-xl hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
-                "border-black px-3 py-2 text-lg font-medium dark:border-white"
-              )}>
-              Home
-            </a>
-            <a
-              href="/about"
-              class={clsx(
-                Astro.url.pathname === "/about"
-                  ? "border-b-2"
-                  : "text-gray-800 rounded-xl hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
-                "border-black px-3 py-2 text-lg font-medium dark:border-white"
-              )}>
-              About
-            </a>
-            <a
-              href="/projects"
-              class={clsx(
-                Astro.url.pathname === "/projects"
-                  ? "border-b-2"
-                  : "text-gray-800 rounded-xl hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
-                "border-black px-3 py-2 text-lg font-medium dark:border-white"
-              )}>
-              Projects
-            </a>
-            <a
-              href="/contact"
-              class={clsx(
-                Astro.url.pathname === "/contact"
-                  ? "border-b-2"
-                  : "text-gray-800 rounded-xl hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
-                "border-black px-3 py-2 text-lg font-medium dark:border-white"
-              )}>
-              Contact
-            </a>
-          </div>
-        </MenuItems>
-        <button
-          id="theme-btn"
-          title="Theme Switcher"
-          class="hidden rounded outline-none ring-blue-500 focus-visible:ring-4 focus-visible:ring-offset-0 sm:block"
-          onclick="handleThemeSwitch()">
-          <Icon name="ph:moon-bold" class="w-8 h-8" />
-          <Icon name="ph:sun-bold" class="w-8 h-8" />
-        </button>
-      </Astronav>
+<header
+  class="dark:bg-slate z-10 min-h-[10vh] items-center bg-slate-100 px-4 pt-4 dark:bg-neutral-900 md:px-10 md:pt-0 lg:flex">
+  <Astronav class="flex flex-1 items-center justify-between sm:items-stretch sm:justify-between">
+    <div class="flex w-full items-center justify-between">
+      <p class="text-lg lg:block">ZW</p>
+      <div class="block lg:hidden">
+        <MenuIcon class="w-8 h-8 text-gray-800 dark:text-neutral-100" />
+      </div>
     </div>
-  </div>
-</header>
-
-<!-- <Menu url={Astro.url.pathname}>
+    <MenuItems class="hidden lg:flex">
+      <div class="flex flex-col lg:flex-row lg:gap-5">
+        <a
+          href="/"
+          class={clsx(
+            Astro.url.pathname === "/"
+              ? "border-b-2"
+              : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
+            "border-black px-3 py-2 text-md font-medium dark:border-white"
+          )}>
+          Home
+        </a>
+        <a
+          href="/about"
+          class={clsx(
+            Astro.url.pathname === "/about"
+              ? "border-b-2"
+              : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
+            "border-black px-3 py-2 text-md font-medium dark:border-white"
+          )}>
+          About
+        </a>
+        <a
+          href="/projects"
+          class={clsx(
+            Astro.url.pathname === "/projects"
+              ? "border-b-2"
+              : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
+            "border-black px-3 py-2 text-md font-medium dark:border-white"
+          )}>
+          Projects
+        </a>
+        <a
+          href="/contact"
+          class={clsx(
+            Astro.url.pathname === "/contact"
+              ? "border-b-2"
+              : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
+            "border-black px-3 py-2 text-md font-medium dark:border-white"
+          )}>
+          Contact
+        </a>
+      </div>
+      <button
+        id="theme-btn"
+        title="Theme Switcher"
+        class="ml-4 rounded outline-none ring-blue-500 focus-visible:ring-4 focus-visible:ring-offset-0"
+        onclick="handleThemeSwitch()">
+        <Icon name="ph:moon-bold" class="w-6 h-6" />
+        <Icon name="ph:sun-bold" class="w-6 h-6" />
+      </button>
+    </MenuItems>
+  </Astronav>
+  <!-- <Menu url={Astro.url.pathname}>
   <button
     id="theme-btn"
     title="Theme Switcher"
@@ -94,16 +79,17 @@ import { Astronav, MenuItems, MenuIcon, Dropdown, DropdownItems } from "astro-na
   </button>
 </Menu> -->
 
-<style lang="css">
-  [astro-icon="ph:moon-bold"]:hover {
-    color: orange;
-  }
-  [astro-icon="ph:sun-bold"],
-  html[data-theme="dark"] [astro-icon="ph:moon-bold"] {
-    display: none;
-  }
-  [astro-icon="ph:moon-bold"],
-  html[data-theme="dark"] [astro-icon="ph:sun-bold"] {
-    display: block;
-  }
-</style>
+  <style lang="css">
+    [astro-icon="ph:moon-bold"]:hover {
+      color: orange;
+    }
+    [astro-icon="ph:sun-bold"],
+    html[data-theme="dark"] [astro-icon="ph:moon-bold"] {
+      display: none;
+    }
+    [astro-icon="ph:moon-bold"],
+    html[data-theme="dark"] [astro-icon="ph:sun-bold"] {
+      display: block;
+    }
+  </style>
+</header>
