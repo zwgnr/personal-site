@@ -22,60 +22,68 @@ const techStack: TechStack[] = [
 ---
 
 <Layout title="projects">
-  <div class="flex w-full max-w-6xl flex-col justify-start overflow-auto p-6">
-    <p class="flex w-full justify-center p-4 text-4xl font-bold">Deck Hub</p>
-
-    <div class="flex w-full flex-row items-center justify-center gap-4">
-      <div class="flex">
-        <a
-          href=""
-          target="_blank"
-          rel="noopener noreferrer"
-          class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-gray-700 hover:text-gray-500">
-          <Icon name="mdi:github" class="w-6 h-6" />
-          <span class="ml-2">Code</span>
-        </a>
-      </div>
-      <div class="flex">
-        <a
-          href=""
-          target="_blank"
-          rel="noopener noreferrer"
-          class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-gray-700 hover:text-gray-500">
-          <Icon name="iconoir:www" class="w-6 h-6" />
-          <span class="ml-2">Live</span>
-        </a>
-      </div>
-    </div>
-    <div class="flex w-full justify-center p-4">
-      <img src="/deckHub.png" class="flex h-full w-3/4 shadow-lg shadow-slate-800" />
-    </div>
-    <div class="w-5xl flex flex-col gap-8">
-      <div class="flex w-full flex-col items-center p-4">
-        <p class="mb-4 text-2xl font-bold">Backstory</p>
-        <div class="flex w-full items-center gap-4">
-          <div class="w-2/3">
-            <p>
-              <a
-                href="https://parallel.life/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="underline">Parallel</a
-              > TCG is a a digital card game similar to those that came before is such as Magic the Gathering,
-              or Hearthstone. In order to play the game you need to build a deck consisting of 40 pre
-              selected cards. There are some other deck builders out there but none of them had the visual
-              aspect that I was looking for, so I decided to build it myself!
-            </p>
+  <div class="flex w-full max-w-5xl flex-col justify-start gap-12 overflow-auto py-8">
+    <!-- ====== About Section Start -->
+    <section class="overflow-hidden">
+      <div class="container mx-auto">
+        <div class="-mx-4 flex flex-wrap items-center justify-between">
+          <div class="w-full px-4 lg:w-2/5">
+            <div class="mt-10 lg:mt-0">
+              <h2 class="text-dark mb-8 text-5xl font-bold">Deck Hub</h2>
+              <p class="text-body-color mb-8 text-lg">
+                A deck builder app for <a
+                  href="https://parallel.life/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline">Parallel,</a
+                > a digital card game similar to Magic the Gathering, or Hearthstone.
+              </p>
+              <p class="text-body-color mb-12 text-lg">
+                There are some other deck builders out there but none of them had the visual
+                building element that I was looking for, so I decided to build it myself!
+              </p>
+              <div class="flex gap-4">
+                <div class="flex">
+                  <a
+                    href=""
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-gray-700 hover:text-gray-500">
+                    <Icon name="mdi:github" class="w-6 h-6" />
+                    <span class="ml-1 text-lg">Code</span>
+                  </a>
+                </div>
+                <div class="flex">
+                  <a
+                    href=""
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-gray-700 hover:text-gray-500">
+                    <Icon name="iconoir:www" class="w-6 h-6" />
+                    <span class="ml-1 text-lg">Live</span>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="w-1/2">
-            <img src="/parallel.png" class="shadow-md shadow-slate-600" />
+          <div class="w-full px-4 lg:w-3/5">
+            <div class="-mx-3 flex items-center sm:-mx-4">
+              <div class="w-full px-3 sm:px-4">
+                <div class="py-3 sm:py-4">
+                  <img src="/deckHub.png" alt="" class="w-full shadow-lg" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </section>
+    <!-- ====== About Section End -->
+
+    <div class="w-5xl flex flex-col gap-8">
       <div class="flex w-full flex-col items-center">
-        <p class="mb-4 w-full text-center text-2xl font-bold">Tech + Key Insights</p>
-        <div class="flex w-full items-center gap-4">
-          <ul class="flex w-1/3 flex-wrap gap-2 rounded-xl p-4 shadow-lg">
+        <div class="flex flex-col gap-8">
+          <ul class="flex w-full flex-wrap gap-2 rounded-xl border-2 p-4 shadow-lg">
             {
               techStack.map((tech) => (
                 <li class="flex w-40 items-center gap-2 p-2">
@@ -89,7 +97,7 @@ const techStack: TechStack[] = [
               ))
             }
           </ul>
-          <div class="w-2/3">
+          <div class="w-1/2">
             <ul class="text-md flex flex-col gap-4">
               <li>
                 <span class="font-bold">GQL Request:</span> To source my data I used the <a
@@ -107,18 +115,18 @@ const techStack: TechStack[] = [
             </ul>
           </div>
         </div>
-        <div class="flex w-full flex-col items-center">
-          <p class="mb-4 text-2xl font-bold">Challenges</p>
-          <p>
-            Managing the state of the card selection was rather difficult for this project. There
-            are close to 50 unique filter options provided. Ensuring the proper cards were displayed
-            correctly in real time upon adding or removing a filter was not easy. React's
-            useEffect() hook was a crictial part of my implimentation. I learned so much about state
-            management in React fom this project.
-          </p>
-          <br />
-        </div>
       </div>
+    </div>
+    <div class="flex w-full flex-col items-center">
+      <p class="mb-4 text-2xl font-bold">Challenges</p>
+      <p>
+        Managing the state of the card selection was rather difficult for this project. There are
+        close to 50 unique filter options provided. Ensuring the proper cards were displayed
+        correctly in real time upon adding or removing a filter was not easy. React's useEffect()
+        hook was a crictial part of my implimentation. I learned so much about state management in
+        React fom this project.
+      </p>
+      <br />
     </div>
   </div>
 </Layout>

@@ -1,95 +1,144 @@
 ---
 import { Icon } from "astro-icon";
 import { clsx } from "clsx";
-import { Astronav, MenuItems, MenuIcon, Dropdown, DropdownItems } from "astro-navbar";
 ---
 
 <script is:inline src="/ThemeSwitcher.js"></script>
 
-<header
-  class="dark:bg-slate z-10 min-h-[10vh] items-center bg-slate-100 px-4 pt-4 dark:bg-neutral-900 md:px-10 md:pt-0 lg:flex">
-  <Astronav class="flex flex-1 items-center justify-between sm:items-stretch sm:justify-between">
-    <div class="flex w-full items-center justify-between">
+<header class="bg-slate-100 dark:bg-neutral-900">
+  <div class="mx-auto flex max-w-6xl flex-col items-center justify-between sm:flex-row px-8">
+    <div class="relative flex w-full items-start justify-between p-4 sm:items-center sm:py-8">
       <p class="text-lg lg:block">ZW</p>
-      <div class="block lg:hidden">
-        <MenuIcon class="w-8 h-8 text-gray-800 dark:text-neutral-100" />
-      </div>
+      <nav
+        class="flex w-full flex-col items-center sm:ml-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0"
+        id="nav-menu">
+        <button
+          id="hamburger-menu"
+          class="focus-outline self-end p-2 sm:hidden"
+          aria-label="Open Menu"
+          aria-expanded="false"
+          aria-controls="menu-items">
+          <div id="icon-container" class="flex h-5 w-6 flex-col items-end justify-between">
+            <div class="h-0.5 w-full bg-black transition-all dark:bg-white" id="first-line"></div>
+            <div class="h-0.5 w-3/4 bg-black transition-all dark:bg-white" id="second-line"></div>
+            <div class="h-0.5 w-1/2 bg-black transition-all dark:bg-white" id="third-line"></div>
+          </div>
+        </button>
+        <ul
+          id="menu-items"
+          class="mt-4 hidden w-32 grid-cols-2 grid-rows-4 gap-y-2 gap-x-2 sm:mt-0 sm:ml-0 sm:flex sm:w-auto sm:gap-y-0 sm:gap-x-5">
+          <li class="col-span-2 flex items-center justify-center">
+            <a
+              href="/"
+              class={clsx(
+                Astro.url.pathname === "/"
+                  ? "border-b-2"
+                  : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
+                "border-black px-3 py-2 text-md dark:border-white"
+              )}>
+              Home
+            </a>
+          </li>
+          <li class="col-span-2 flex items-center justify-center">
+            <a
+              href="/about"
+              class={clsx(
+                Astro.url.pathname === "/about"
+                  ? "border-b-2"
+                  : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
+                "border-black px-3 py-2 text-md dark:border-white"
+              )}>
+              About
+            </a>
+          </li>
+          <li class="col-span-2 flex items-center justify-center">
+            <a
+              href="/projects"
+              class={clsx(
+                Astro.url.pathname === "/projects"
+                  ? "border-b-2"
+                  : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
+                "border-black px-3 py-2 text-md font-medium dark:border-white"
+              )}>
+              Projects
+            </a>
+          </li>
+          <li class="col-span-2 flex items-center justify-center">
+            <a
+              href="/contact"
+              class={clsx(
+                Astro.url.pathname === "/contact"
+                  ? "border-b-2"
+                  : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
+                "border-black px-3 py-2 text-md font-medium dark:border-white"
+              )}>
+              Contact
+            </a>
+          </li>
+          <li class="col-span-2 flex items-center justify-center">
+            <button
+              id="theme-btn"
+              title="Theme Switcher"
+              class="rounded outline-none ring-blue-500 focus-visible:ring-4 focus-visible:ring-offset-0"
+              onclick="handleThemeSwitch()">
+              <Icon name="ph:moon-bold" class="w-6 h-6" />
+              <Icon name="ph:sun-bold" class="w-6 h-6" />
+            </button>
+          </li>
+        </ul>
+      </nav>
     </div>
-    <MenuItems class="hidden lg:flex">
-      <div class="flex flex-col lg:flex-row lg:gap-5">
-        <a
-          href="/"
-          class={clsx(
-            Astro.url.pathname === "/"
-              ? "border-b-2"
-              : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
-            "border-black px-3 py-2 text-md font-medium dark:border-white"
-          )}>
-          Home
-        </a>
-        <a
-          href="/about"
-          class={clsx(
-            Astro.url.pathname === "/about"
-              ? "border-b-2"
-              : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
-            "border-black px-3 py-2 text-md font-medium dark:border-white"
-          )}>
-          About
-        </a>
-        <a
-          href="/projects"
-          class={clsx(
-            Astro.url.pathname === "/projects"
-              ? "border-b-2"
-              : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
-            "border-black px-3 py-2 text-md font-medium dark:border-white"
-          )}>
-          Projects
-        </a>
-        <a
-          href="/contact"
-          class={clsx(
-            Astro.url.pathname === "/contact"
-              ? "border-b-2"
-              : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
-            "border-black px-3 py-2 text-md font-medium dark:border-white"
-          )}>
-          Contact
-        </a>
-      </div>
-      <button
-        id="theme-btn"
-        title="Theme Switcher"
-        class="ml-4 rounded outline-none ring-blue-500 focus-visible:ring-4 focus-visible:ring-offset-0"
-        onclick="handleThemeSwitch()">
-        <Icon name="ph:moon-bold" class="w-6 h-6" />
-        <Icon name="ph:sun-bold" class="w-6 h-6" />
-      </button>
-    </MenuItems>
-  </Astronav>
-  <!-- <Menu url={Astro.url.pathname}>
-  <button
-    id="theme-btn"
-    title="Theme Switcher"
-    class="rounded outline-none ring-blue-500 focus-visible:ring-4 focus-visible:ring-offset-0"
-    onclick="handleThemeSwitch()">
-    <Icon name="ph:moon-bold" class="w-8 h-8" />
-    <Icon name="ph:sun-bold" class="w-8 h-8" />
-  </button>
-</Menu> -->
-
-  <style lang="css">
-    [astro-icon="ph:moon-bold"]:hover {
-      color: orange;
-    }
-    [astro-icon="ph:sun-bold"],
-    html[data-theme="dark"] [astro-icon="ph:moon-bold"] {
-      display: none;
-    }
-    [astro-icon="ph:moon-bold"],
-    html[data-theme="dark"] [astro-icon="ph:sun-bold"] {
-      display: block;
-    }
-  </style>
+  </div>
 </header>
+
+<style lang="css">
+  [astro-icon="ph:moon-bold"]:hover {
+    color: orange;
+  }
+  [astro-icon="ph:sun-bold"],
+  html[data-theme="dark"] [astro-icon="ph:moon-bold"] {
+    display: none;
+  }
+  [astro-icon="ph:moon-bold"],
+  html[data-theme="dark"] [astro-icon="ph:sun-bold"] {
+    display: block;
+  }
+</style>
+
+<script>
+  // Toggle menu
+  const menuBtn = document.querySelector("#hamburger-menu");
+  const menuItems = document.querySelector("#menu-items")?.classList;
+
+  const iconContainer = document.querySelector("#icon-container")?.classList;
+  const firstLine = document.querySelector("#first-line")?.classList;
+  const secondLine = document.querySelector("#second-line ")?.classList;
+  const thirdLine = document.querySelector("#third-line")?.classList;
+
+  menuBtn?.addEventListener("click", function () {
+    const menuExpanded = menuBtn?.getAttribute("aria-expanded");
+    if (menuExpanded === "false") {
+      menuBtn?.setAttribute("aria-expanded", "true");
+      menuBtn?.setAttribute("aria-label", "Close Menu");
+      menuItems?.remove("hidden");
+      menuItems?.add("grid");
+      // icon animation
+      iconContainer?.remove("flex");
+      iconContainer?.add("relative");
+      firstLine?.add("rotate-45", "absolute", "bottom-1/2");
+      thirdLine?.add("hidden");
+      secondLine?.add("!w-full", "-rotate-45", "absolute", "bottom-1/2");
+    } else {
+      menuBtn?.setAttribute("aria-expanded", "false");
+      menuBtn?.setAttribute("aria-label", "Open Menu");
+      menuItems?.add("hidden");
+
+      // icon animation
+      iconContainer?.add("flex");
+      iconContainer?.remove("relative");
+      firstLine?.remove("rotate-45", "absolute", "bottom-1/2");
+      thirdLine?.remove("hidden");
+      secondLine?.remove("!w-full", "-rotate-45", "absolute", "bottom-1/2");
+    }
+  });
+</script>
