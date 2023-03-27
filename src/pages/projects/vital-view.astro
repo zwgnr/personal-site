@@ -3,13 +3,15 @@ import Nav from "../../components/Nav.astro";
 import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/Card.astro";
 import { Icon } from "astro-icon";
+import { clsx } from "clsx";
 
 export interface TechStack {
   name: string;
   icon: string;
+  glow: string;
 }
 
-const techStack: TechStack[] = [
+const old = [
   { name: "Typescript", icon: "vscode-icons:file-type-typescript-official" },
   { name: "React", icon: "logos:react" },
   { name: "NextJS", icon: "simple-icons:nextdotjs" },
@@ -19,103 +21,158 @@ const techStack: TechStack[] = [
   { name: "SWR", icon: "logos:swr" },
   { name: "Vercel", icon: "tabler:brand-vercel" },
 ];
+
+const techStack: TechStack[] = [
+  { name: "Typescript", icon: "typescript", glow: "shadow-xl shadow-blue-200" },
+  { name: "React", icon: "react", glow: "shadow-xl shadow-sky-100" },
+  { name: "NextJS", icon: "logos:nextjs-icon", glow: "shadow-xl shadow-neutral-300 p-2" },
+  {
+    name: "AuthJS",
+    icon: "ic:twotone-shield",
+    glow: "shadow-xl shadow-neutral-100 p-2 ",
+  },
+  { name: "TailwindCSS", icon: "logos:tailwindcss-icon", glow: "shadow-xl shadow-emerald-100 p-2" },
+  { name: "HeadlessUI", icon: "headless", glow: "shadow-xl shadow-blue-100 p-2" },
+  { name: "SWR", icon: "logos:swr", glow: "shadow-xl shadow-neutral-300 p-2" },
+  { name: "Vercel", icon: "tabler:brand-vercel", glow: "shadow-xl shadow-neutral-300 p-2" },
+];
 ---
 
 <Layout title="projects">
-  <div class="flex w-full max-w-6xl flex-col justify-start overflow-auto p-6">
-    <p class="flex w-full justify-center p-4 text-4xl font-bold">Vital View</p>
-
-    <div class="flex w-full flex-row items-center justify-center gap-4">
-      <div class="flex">
-        <a
-          href="https://github.com/zwagnr/vital-view"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-gray-700 hover:text-gray-500">
-          <Icon name="mdi:github" class="w-6 h-6" />
-          <span class="ml-2">Code</span>
-        </a>
-      </div>
-      <div class="flex">
-        <a
-          href="https://vitalview.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-gray-700 hover:text-gray-500">
-          <Icon name="iconoir:www" class="w-6 h-6" />
-          <span class="ml-2">Live</span>
-        </a>
-      </div>
-    </div>
-    <div class="flex w-full justify-center p-4">
-      <img src="/vvPreview.png" class="flex h-full w-3/4 shadow-lg shadow-slate-800" />
-    </div>
-    <div class="w-5xl flex flex-col gap-8">
-      <div class="flex w-full flex-col items-center p-4">
-        <p class="mb-4 text-2xl font-bold">Backstory</p>
-        <div class="flex w-full items-center gap-4">
-          <div class="w-2/3">
-            <p>
-              After feeling overwhelmed with digital screens dominating my daily life, I decided to
-              switch from my Apple Watch to an Oura Ring to track my activity and sleep data.
-            </p>
-            <br />
-            <p>
-              Although Oura provided a web dashboard to view my metrics, I found it lacking in
-              certain elements. As I have always preferred web dashboards, I decided to create Vital
-              View to enhance the visualization and usability of the data provided by the Oura Ring.
-            </p>
+  <div class="flex w-full max-w-7xl flex-col justify-start gap-0 overflow-auto p-8 md:p-0">
+    <section class="overflow-hidden">
+      <div class="container mx-auto">
+        <div class="-mx-4 flex flex-wrap items-center justify-between">
+          <div class="mt-24 w-full px-4">
+            <div class="lg:mt-0">
+              <h2 class="text-dark mb-8 text-6xl font-bold">Vital View</h2>
+              <p class="mb-8 text-lg">A data analytics dashboard for your Oura Ring statistics.</p>
+              <div class="flex gap-8">
+                <div class="flex">
+                  <a
+                    href="https://github.com/zwagnr/vital-view"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-gray-700 hover:text-gray-500">
+                    <Icon name="mdi:github" class="w-6 h-6" />
+                    <span class="ml-1 text-lg font-bold">Code</span>
+                  </a>
+                </div>
+                <div class="flex">
+                  <a
+                    href="https://vitalview.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-gray-700 hover:text-gray-500">
+                    <Icon name="iconoir:www" class="w-6 h-6" />
+                    <span class="ml-1 text-lg font-bold">Live</span>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="w-1/2">
-            <img src="/vvOverviewLight.png" class="shadow-md shadow-slate-600" />
+          <div class="w-full lg:w-4/6">
+            <div class="-mx-3 flex items-center sm:-mx-4">
+              <div class="flex w-full items-center justify-center p-4"></div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="flex w-full flex-col items-center">
-        <p class="mb-4 w-full text-center text-2xl font-bold">Tech + Key Insights</p>
-        <div class="flex w-full items-center gap-4">
-          <ul class="flex w-1/3 flex-wrap gap-2 rounded-xl p-4 shadow-lg">
-            {
-              techStack.map((tech) => (
-                <li class="flex w-40 items-center gap-2 p-2">
-                  {tech.name === "AuthJS" ? (
-                    <img src="/authJS.png" class="h-10 w-10" />
-                  ) : (
-                    <Icon name={tech.icon} class="h-10 w-10" />
-                  )}
-                  <p>{tech.name}</p>
-                </li>
-              ))
-            }
-          </ul>
-          <div class="w-2/3">
-            <ul class="text-md flex flex-col gap-4">
-              <li>
-                <span class="font-bold">AuthJS:</span> Oura provies an OAuth2 Authentication flow to
-                allow developers a way to provide users access to their data. AuthJS allowed for a straightforward
-                and secure way to handle this flow.
-              </li>
-              <li>
-                <span class="font-bold">NextJS:</span> Next's api routes allowed making API calls to
-                Oura via the backend a smooth process.
-              </li>
-              <li>
-                <span class="font-bold">SWR:</span> This lightweight library made getting data from the
-                backend seemless. It consists of React Hooks for data fetching.
-              </li>
-            </ul>
+    </section>
+    <div class="mb-16 p-4">
+      <img src="/vvPreview.png" alt="" class="w-full rounded-lg shadow-xl shadow-neutral-400" />
+    </div>
+    <ul
+      class="mx-auto mb-12 flex w-3/4 flex-wrap items-center justify-center gap-8 rounded-xl border p-4 shadow-lg">
+      {
+        techStack.map((tech) => (
+          <li class="flex items-center gap-2 p-2">
+            <div
+              class={clsx(
+                tech.glow,
+                "flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-200"
+              )}>
+              <Icon name={tech.icon} class="h-16 w-16" />
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="w-5xl mt-8 flex flex-col gap-8">
+      <div class="flex w-full flex-col items-center gap-16">
+        <div class="flex w-full flex-col gap-8">
+          <p class="text-4xl font-bold">Motivation</p>
+          <div class="flex w-full justify-center">
+            <div class="flex w-full flex-row items-center gap-8 text-lg md:w-full">
+              <div class="flex w-full flex-row items-center justify-center gap-8">
+                <div class="flex w-1/2 flex-col gap-8">
+                  <p>
+                    After feeling overwhelmed with digital screens dominating my daily life, I
+                    decided to switch from my Apple Watch to an Oura Ring to track my activity and
+                    sleep data.
+                  </p>
+                  <p>
+                    Although Oura provided a web dashboard to view my metrics, I found it lacking in
+                    certain elements. As I have always preferred web dashboards, I decided to create
+                    Vital View to enhance the visualization and usability of the data provided by
+                    the Oura Ring.
+                  </p>
+                </div>
+                <div class="w-1/2">
+                  <img
+                    id="ouraRing"
+                    src="/ouraRing.png"
+                    alt="Oura Ring"
+                    class="object-scale-down"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="flex w-full flex-col items-center">
-        <p class="mb-4 text-2xl font-bold">Challenges</p>
-        <p>
-          Managing data from the Oura API was challenging, particularly getting calculations correct
-          for the desired timeframe and format. DayJS proved useful for organizing monthly data for
-          yearly charts. Calculating percent changes between periods was also difficult as the
-          timeframe had to be split into two datasets for comparison. By abstracting the period
-          logic into current and prior periods, this was made possible.
-        </p>
+        <div class="flex w-full flex-col gap-8">
+          <p class="mb-4 text-4xl font-bold">So Many Charts!</p>
+          <div class="flex w-full justify-center">
+            <div class="flex w-full flex-row items-center gap-8 text-lg md:w-full">
+              <div class="flex w-1/2 flex-col gap-8">
+                <p>
+                  Bar, line, pie, heatmap, sparkline, and multiline charts are all used in this app.
+                  The Oura Ring provides such an abundance of data that having a wide array of
+                  charts was necessary.
+                </p>
+                <p>
+                  To handle the heavy charting needs for this app, I chose to use Apex Charts. They
+                  allowed for a wide variety of chart types while also providing the level of
+                  responsiveness I required.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex w-full flex-col gap-8">
+          <p class="mb-4 text-4xl font-bold">Security is our # 1 Priority</p>
+          <div class="flex w-full justify-center">
+            <div class="flex w-full flex-row items-center gap-8 text-lg md:w-full">
+              <img
+                id="filter-img"
+                src="/oAuth.png"
+                alt=""
+                class="w-1/2 rounded-md object-scale-down shadow-lg"
+              />
+              <div class="flex w-1/2 flex-col gap-8">
+                <p>
+                  It goes without saying that Security should be any developers number one priority.
+                  Oura provides an Oauth2 Authentication flow to access users data for them.
+                </p>
+                <p>
+                  To handle this all securely I used AuthJS (formerly NextJS). It abstracts some of
+                  the complexity of the auth flow, while providing top notch security at the same
+                  time.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
         <br />
       </div>
     </div>
