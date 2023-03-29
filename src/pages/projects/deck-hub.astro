@@ -1,40 +1,38 @@
 ---
-import Nav from "../../components/Nav.astro";
+import { Image } from "@astrojs/image/components";
+
 import Layout from "../../layouts/Layout.astro";
-import Card from "../../components/Card.astro";
 import { Icon } from "astro-icon";
 import { clsx } from "clsx";
 
 export interface TechStack {
   name: string;
   icon: string;
-  glow: string;
+  styles: string;
 }
 
 const techStack: TechStack[] = [
-  { name: "Typescript", icon: "typescript", glow: "shadow-xl shadow-blue-200" },
-  { name: "React", icon: "react", glow: "shadow-xl shadow-sky-100" },
+  {
+    name: "Typescript",
+    icon: "typescript",
+    styles: "p-2",
+  },
+  { name: "React", icon: "logos:react", styles: "p-2" },
   {
     name: "GQL Request",
     icon: "logos:graphql",
-    glow: "shadow-xl shadow-pink-100 p-2",
+    styles: "p-3",
   },
-  { name: "NextJS", icon: "logos:nextjs-icon", glow: "shadow-xl shadow-neutral-300 p-2" },
-  { name: "TailwindCSS", icon: "logos:tailwindcss-icon", glow: "shadow-xl shadow-emerald-100 p-2" },
-  { name: "HeadlessUI", icon: "headless", glow: "shadow-xl shadow-blue-100 p-2" },
-  { name: "ChartJS", icon: "file-icons:chartjs", glow: "shadow-xl shadow-neutral-300 p-2" },
-  { name: "Vercel", icon: "tabler:brand-vercel", glow: "shadow-xl shadow-neutral-300 p-2" },
+  { name: "NextJS", icon: "next", styles: "p-1" },
+  { name: "TailwindCSS", icon: "logos:tailwindcss-icon", styles: "p-2" },
+  { name: "HeadlessUI", icon: "headless", styles: "p-2" },
+  { name: "ChartJS", icon: "chartjs", styles: "p-1" },
+  { name: "Vercel", icon: "tabler:brand-vercel", styles: "p-2" },
 ];
 ---
 
-<script>
-  let currentTheme = document.documentElement.attributes.getNamedItem("data-theme")?.value;
-  const img = document.getElementById("filter-img");
-  //currentTheme === "light" ? (img.src = "/dhFiltersLight.png") : (img.src = "/dhFiltersDark.png");
-</script>
-
 <Layout title="projects">
-  <div class="flex w-full max-w-7xl flex-col justify-start gap-0 overflow-auto p-8 md:p-0">
+  <div class="mb-12 flex w-full max-w-7xl flex-col justify-start gap-0 overflow-auto p-8 xl:p-0">
     <!-- ====== About Section Start -->
     <section class="overflow-hidden">
       <div class="container mx-auto">
@@ -57,7 +55,7 @@ const techStack: TechStack[] = [
                     href=""
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-gray-700 hover:text-gray-500">
+                    class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-neutral-700 hover:text-gray-500 dark:text-neutral-400">
                     <Icon name="mdi:github" class="w-6 h-6" />
                     <span class="ml-1 text-lg font-bold">Code</span>
                   </a>
@@ -67,7 +65,7 @@ const techStack: TechStack[] = [
                     href=""
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-gray-700 hover:text-gray-500">
+                    class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-neutral-700 hover:text-gray-500 dark:text-neutral-400">
                     <Icon name="iconoir:www" class="w-6 h-6" />
                     <span class="ml-1 text-lg font-bold">Live</span>
                   </a>
@@ -83,37 +81,43 @@ const techStack: TechStack[] = [
         </div>
       </div>
     </section>
-    <div class="mb-16 p-4">
-      <img src="/deckHub.png" alt="" class="w-full rounded-lg shadow-xl shadow-neutral-400" />
+    <div class="mb-16 p-2">
+      <Image
+        src="/images/deckHub.jpg"
+        alt="Deck Hub"
+        format={"webp"}
+        height={2248}
+        width={4384}
+        aspectRatio="16:9"
+        fit="fill"
+        class="rounded-lg shadow-xl dark:border dark:border-neutral-600"
+      />
     </div>
     <!-- ====== About Section End -->
     <ul
-      class="mx-auto mb-12 flex w-3/4 flex-wrap items-center justify-center gap-8 rounded-xl border p-4 shadow-lg">
+      class="min-w-1/2 mx-auto mb-12 flex flex-wrap items-center justify-center gap-8 rounded-xl border p-4 shadow-lg dark:border-neutral-600">
       {
         techStack.map((tech) => (
           <li class="flex items-center gap-2 p-2">
-            {tech.name === "AuthJS" ? (
-              <img src="/authJS.png" class="h-10 w-10" />
-            ) : (
-              <div
-                class={clsx(
-                  tech.glow,
-                  "flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-200"
-                )}>
-                <Icon name={tech.icon} class="h-16 w-16" />
-              </div>
-            )}
+            <div
+              title={tech.name}
+              class={clsx(
+                tech.styles,
+                "flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-200 shadow-lg dark:bg-slate-700"
+              )}>
+              <Icon name={tech.icon} class="h-16 w-16" />
+            </div>
           </li>
         ))
       }
     </ul>
-    <div class="w-5xl mt-8 flex flex-col gap-8">
+    <div class="mt-8 flex max-w-5xl flex-col gap-8">
       <div class="flex w-full flex-col items-center gap-16">
-        <div class="flex w-full flex-col gap-8">
-          <p class="mb-4 text-4xl font-bold">Did we really need another one?</p>
+        <div class="flex w-full flex-col items-start gap-8 lg:w-3/4">
+          <p class="mb-4 text-3xl font-bold">Did we really need another one?</p>
           <div class="flex w-full justify-center">
             <div class="flex w-full flex-row items-center gap-8 text-lg md:w-full">
-              <div class="flex w-full md:w-1/2 flex-col gap-8">
+              <div class="flex w-full flex-col gap-8 lg:w-3/4">
                 <p>
                   It's true that there are several other deck builders in existance. However, they
                   all lack the visual deck building aspect that I love.
@@ -129,20 +133,23 @@ const techStack: TechStack[] = [
             </div>
           </div>
         </div>
-        <div class="flex w-full flex-col gap-8">
-          <p class="mb-4 text-4xl font-bold">Hover Me!</p>
+        <div class="flex w-full flex-col gap-8 lg:w-3/4">
+          <p class="mb-4 text-3xl font-bold">Hover Me!</p>
           <div class="flex w-full justify-center">
-            <div class="flex w-full flex-col items-center gap-8 text-lg md:w-full">
+            <div class="flex w-full flex-col items-start gap-8 text-lg md:w-full">
               <div class="flex w-full items-start justify-center gap-8">
-                <img
-                  id="toggles"
-                  src="/hoverCard.png"
-                  alt="toggles"
-                  class="w-3/4 rounded-md object-scale-down shadow-lg"
+                <Image
+                  src="/images/hoverCard.png"
+                  alt="Hover Card"
+                  format="webp"
+                  height={1260}
+                  width={3000}
+                  fit="fill"
+                  class="rounded-lg shadow-xl dark:border dark:border-neutral-600"
                 />
               </div>
 
-              <div class="flex w-full lg:w-1/2 flex-col gap-8">
+              <div class="flex w-full flex-col items-start gap-8 lg:w-3/4">
                 <p>
                   With the hover toggle enabled anytime you hover over a card the above card pops
                   up. It displays detailed information about each card including it's in game stats.
@@ -157,17 +164,20 @@ const techStack: TechStack[] = [
             </div>
           </div>
         </div>
-        <div class="flex w-full flex-col gap-8">
-          <p class="mb-4 text-4xl font-bold">Filters, Filters, Filters</p>
-          <div class="flex w-full justify-center">
-            <div class="flex w-full flex-row items-center gap-8 text-lg md:w-full">
-              <img
-                id="filter-img"
-                src="/dhFilters.png"
-                alt=""
-                class="w-1/2 rounded-md object-scale-down shadow-lg"
+        <div class="flex w-full flex-col gap-8 lg:w-3/4">
+          <p class="mb-4 text-3xl font-bold">Filters, Filters, Filters</p>
+          <div class="flex w-full justify-start">
+            <div class="flex w-full flex-col items-start gap-8 text-lg md:w-full">
+              <Image
+                src="/images/dhFilters.png"
+                alt="Filters"
+                format="png"
+                height={800}
+                width={1143}
+                fit="fill"
+                class="rounded-lg shadow-xl dark:border dark:border-neutral-600"
               />
-              <div class="flex w-1/2 flex-col gap-8">
+              <div class="flex w-full flex-col gap-8 lg:w-3/4">
                 <p>
                   Handling the state for almost 30 unique card filter options was quite challenging
                   for me.
@@ -182,6 +192,5 @@ const techStack: TechStack[] = [
         </div>
       </div>
     </div>
-    <br />
   </div>
 </Layout>

@@ -1,0 +1,152 @@
+---
+import { Icon } from "astro-icon";
+import Socials from "../components/socials.astro";
+import Layout from "../layouts/Layout.astro";
+import sgMail from "@sendgrid/mail";
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const name = data.get("name");
+    const email = data.get("email");
+    const formMessage = data.get("message");
+
+    const message = {
+      to: "zachwagner@hey.com",
+      from: "zachwagner@hey.com",
+      subject: "New message from contact form",
+      text: `Name: ${name}\nEmail: ${email}\nMessage: ${formMessage}`,
+    };
+    sgMail.setApiKey(import.meta.env.SENDGRID_API_KEY);
+    await sgMail.send(message);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+---
+
+<script>
+  import confetti from "canvas-confetti";
+
+  // Find form DOM on the page.
+  const form = document.querySelector("[data-confetti-form]") as HTMLFormElement;
+
+  form?.addEventListener("submit", (e) => {
+    // Set a flag in localStorage to remember that the form has been submitted.
+    localStorage.setItem("formSubmitted", "true");
+
+    // Allow the form to submit normally.
+    return true;
+  });
+
+  const count = 200;
+  const defaults = {
+    origin: { y: 0.7 },
+  };
+
+  function fire(
+    particleRatio: number,
+    opts: { spread: number; startVelocity?: number; decay?: number; scalar?: number }
+  ) {
+    confetti(
+      Object.assign({}, defaults, opts, {
+        particleCount: Math.floor(count * particleRatio),
+      })
+    );
+  }
+  // Check if the form has been submitted.
+  const submitted = localStorage.getItem("formSubmitted");
+
+  if (submitted) {
+    // Trigger the confetti animation.
+    fire(0.25, {
+      spread: 26,
+      startVelocity: 55,
+    });
+    fire(0.2, {
+      spread: 60,
+    });
+    fire(0.35, {
+      spread: 100,
+      decay: 0.91,
+      scalar: 0.8,
+    });
+    fire(0.1, {
+      spread: 120,
+      startVelocity: 25,
+      decay: 0.92,
+      scalar: 1.2,
+    });
+    fire(0.1, {
+      spread: 120,
+      startVelocity: 45,
+    });
+
+    // Remove the submitted flag from localStorage.
+    localStorage.removeItem("formSubmitted");
+  }
+</script>
+
+<Layout title="contact">
+  <div class="mx-auto flex h-fit w-full max-w-7xl flex-col justify-center px-8">
+    <h2
+      class="flex justify-center mt-16 p-4 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
+      Get in touch
+    </h2>
+    <p class="text-center mt-3 flex justify-center text-lg text-gray-500 dark:text-gray-400">
+      Please reach out with any questions, opportunities, or just to say hi!
+    </p>
+    <div class="flex w-full justify-center">
+      <div class="w-full py-12 px-4 sm:px-6 md:w-1/2 lg:px-8">
+        <div class="mx-auto max-w-lg lg:max-w-none">
+          <form data-confetti-form action="#" method="POST" class="grid grid-cols-1 gap-y-6">
+            <div class="flex flex-col gap-2">
+              <label for="name" class="">Name</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                autocomplete="name"
+                class="block w-full rounded-md border-2 border-neutral-300 dark:border-neutral-400 bg-transparent py-3 px-4 placeholder-gray-500 shadow-sm focus:border-black focus:ring-black"
+                placeholder="Your Name"
+                required
+              />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label for="email" class="">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                class="block w-full rounded-md border-2 border-neutral-300 dark:border-neutral-400 bg-transparent py-3 px-4 placeholder-gray-500 shadow-sm focus:border-black focus:ring-black"
+                placeholder="you@company.com"
+                required
+              />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label for="message" class="">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                class="block w-full rounded-md border-2 border-neutral-300 dark:border-neutral-400 bg-transparent py-3 px-4 placeholder-gray-500 shadow-sm focus:border-black focus:ring-black"
+                placeholder="Your Message"
+                required></textarea>
+            </div>
+            <div>
+              <button
+                type="submit"
+                class="inline-flex justify-center rounded-md border-2 border-transparent bg-black py-3 px-6 text-base font-medium text-white shadow-xl hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 dark:bg-white dark:text-black dark:hover:border-white dark:hover:bg-transparent dark:hover:text-white"
+                >Submit</button
+              >
+            </div>
+          </form>
+        </div>
+        <div class="mt-4 flex w-full justify-center"><Socials /></div>
+      </div>
+    </div>
+  </div>
+</Layout>

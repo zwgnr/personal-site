@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Socials from "../components/socials.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <div class="mt-16 flex h-full w-full max-w-7xl flex-col justify-center p-12 gap-8">
+    <div class="flex flex-col">
+      <h1 class="m-0 text-7xl font-bold">
+        Hi, I'm <span class="">Zach</span>
+      </h1>
+    </div>
+
+    <p class="text-lg">Software Developer with a passion for all things creative.</p>
+
+    <p class="text-lg">
+      While you're here, feel free to checkout some more <a href="/about/" class="underline"
+        >About</a
+      >
+      me and some of my selected <a href="/projects/" class="underline">Projects</a>.
+    </p>
+    <Socials />
+  </div>
+</Layout>

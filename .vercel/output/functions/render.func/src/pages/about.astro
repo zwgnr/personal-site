@@ -1,0 +1,95 @@
+---
+import Nav from "../components/Nav.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="about">
+  <div class="max-w-4xl p-12 text-lg">
+    <div class="mb-12 flex flex-col gap-4 border-b-2 p-4">
+      <h1 class="text-5xl font-bold">TLDR:</h1><p>
+        I'm a lifelong musician/audio engineer turned software engineer.
+      </p>
+    </div>
+
+    <p>
+      For a significant part of my life, I was involved in music in various capacities, including
+      playing guitar, audio engineering, and producing. My passion for music began in 7th grade when
+      I received a guitar for Christmas, and from then on, I devoted countless hours every day to
+      practice and learning. I learned guitar tabs online and studied guitar books, and eventually,
+      I became quite skilled. In 8th grade, I started recording demos of songs I wrote with software
+      called Sony Acid Pro. This led me to be a part of many bands in middle and high school, and I
+      was fortunate enough to play hundreds of shows across the US during that time.
+    </p>
+    <br />
+    <p>
+      After high school, I pursued a career in music with a focus on audio engineering and
+      producing. I discovered FL Studio, a digital audio workstation software that allowed me to use
+      virtual studio technology to create music by emulating analog instruments and effects. I found
+      moderate success in music production, creating instrumental tracks that I sold to vocalists.
+      At the same time, I delved into audio engineering with the same determination and diligence
+      that I had earlier used to teach myself guitar. I spent countless hours researching and
+      studying techniques, and I set up a makeshift studio with limited resources. As I got more
+      clients, I reinvested in better equipment and eventually had a professional setup. Between
+      income from instrumental sales, recording, and various odd jobs, I sustained myself for some
+      years.
+    </p>
+    <br />
+    <p>
+      Then, in 2020, the COVID-19 pandemic hit, and it forced me to look inward and evaluate my
+      passions. I realized that my love for music had begun to fade, and it was time to explore new
+      interests. During my years working with DAWs and VSTs, I had developed a fascination with
+      software and had always been searching for the latest plugin that could enhance my workflow. I
+      spent hours analyzing the unique features and usability of every software I could find. And
+      that's when I discovered my newfound passion for software development.
+    </p>
+    <br />
+    <p>
+      Using the same self-motivation and dedication that had helped me succeed in music, I decided
+      to teach myself programming during the quarantine period. I spent countless hours watching
+      tutorials, reading books, and practicing coding, and I fell in love with it. Programming
+      allowed me to combine my problem-solving skills and creativity, and I found myself constantly
+      seeking innovative solutions to coding challenges.
+    </p>
+    <br />
+    <p>
+      Although my journey has been somewhat unconventional, my experience in music has been
+      invaluable in my development as a programmer. It has taught me to approach problems with an
+      open mind and to always seek creative solutions.
+    </p>
+  </div>
+</Layout>
+
+<style>
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+  .instructions {
+    line-height: 1.6;
+    margin: 1rem 0;
+    border: 1px solid rgba(var(--accent), 25%);
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.4rem;
+  }
+  .instructions code {
+    font-size: 0.875em;
+    font-weight: bold;
+    background: rgba(var(--accent), 12%);
+    color: rgb(var(--accent));
+    border-radius: 4px;
+    padding: 0.3em 0.45em;
+  }
+  .instructions strong {
+    color: rgb(var(--accent));
+  }
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 1rem;
+    padding: 0;
+  }
+</style>

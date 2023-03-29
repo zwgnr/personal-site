@@ -1,0 +1,179 @@
+---
+import Nav from "../../components/Nav.astro";
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+import { Icon } from "astro-icon";
+import { clsx } from "clsx";
+
+export interface TechStack {
+  name: string;
+  icon: string;
+  styles: string;
+}
+
+const techStack: TechStack[] = [
+  { name: "Typescript", icon: "typescript", styles: "p-2" },
+  { name: "React", icon: "logos:react", styles: "p-2" },
+  { name: "NextJS", icon: "next", styles: "p-2" },
+  {
+    name: "AuthJS",
+    icon: "ic:twotone-shield",
+    styles: "p-2 ",
+  },
+  { name: "TailwindCSS", icon: "logos:tailwindcss-icon", styles: "p-2" },
+  { name: "HeadlessUI", icon: "headless", styles: "p-2" },
+  { name: "SWR", icon: "logos:swr", styles: "p-2" },
+  { name: "Vercel", icon: "tabler:brand-vercel", styles: "p-2" },
+];
+---
+
+<Layout title="projects">
+  <div class="flex w-full max-w-7xl flex-col justify-start gap-0 overflow-auto p-8 md:p-0">
+    <section class="overflow-hidden">
+      <div class="container mx-auto">
+        <div class="-mx-4 flex flex-wrap items-center justify-between">
+          <div class="mt-24 w-full px-4">
+            <div class="lg:mt-0">
+              <h2 class="text-dark mb-8 text-6xl font-bold">Vital View</h2>
+              <p class="mb-8 text-lg">A data analytics dashboard for your Oura Ring statistics.</p>
+              <div class="flex gap-8">
+                <div class="flex">
+                  <a
+                    href="https://github.com/zwagnr/vital-view"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-neutral-700 hover:text-gray-500 dark:text-neutral-400">
+                    <Icon name="mdi:github" class="w-6 h-6" />
+                    <span class="ml-1 text-lg font-bold">Code</span>
+                  </a>
+                </div>
+                <div class="flex">
+                  <a
+                    href="https://vitalview.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-neutral-700 hover:text-gray-500 dark:text-neutral-400">
+                    <Icon name="iconoir:www" class="w-6 h-6" />
+                    <span class="ml-1 text-lg font-bold">Live</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full lg:w-4/6">
+            <div class="-mx-3 flex items-center sm:-mx-4">
+              <div class="flex w-full items-center justify-center p-4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="mb-16 p-4">
+      <img src="/vvPreview.png" alt="" class="w-full rounded-lg shadow-xl" />
+    </div>
+    <ul
+      class="mx-auto mb-12 flex w-3/4 flex-wrap items-center justify-center gap-8 rounded-xl border p-4 shadow-lg dark:border-neutral-600">
+      {
+        techStack.map((tech) => (
+          <li class="flex items-center gap-2 p-2">
+            <div
+              title={tech.name}
+              class={clsx(
+                tech.styles,
+                "flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-200 shadow-lg dark:bg-slate-700"
+              )}>
+              <Icon name={tech.icon} class="h-16 w-16" />
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="w-5xl mt-8 flex flex-col gap-8">
+      <div class="flex w-full flex-col items-center gap-16">
+        <div class="flex w-full flex-col gap-8 lg:w-3/4">
+          <p class="text-3xl font-bold">Motivation</p>
+          <div class="flex w-full justify-center">
+            <div class="flex w-full flex-col items-start gap-8 text-lg md:w-full">
+              <div class="flex w-full flex-col items-start justify-center gap-8">
+                <div class="flex w-full flex-col gap-8 lg:w-3/4">
+                  <p>
+                    After feeling overwhelmed with digital screens dominating my daily life, I
+                    decided to switch from my Apple Watch to an Oura Ring to track my activity and
+                    sleep data.
+                  </p>
+                  <p>
+                    Although Oura provided a web dashboard to view my metrics, I found it lacking in
+                    certain elements. As I have always preferred web dashboards, I decided to create
+                    Vital View to enhance the visualization and usability of the data provided by
+                    the Oura Ring.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex w-full flex-col gap-8 lg:w-3/4">
+          <p class="text-3xl font-bold">So Many Charts!</p>
+          <div class="flex w-full justify-center">
+            <div class="flex w-full flex-row items-start gap-8 text-lg md:w-full">
+              <div class="flex w-full flex-col gap-8 lg:w-3/4">
+                <p>
+                  Bar, line, pie, heatmap, sparkline, and multiline charts are all used in this app.
+                  The Oura Ring provides such an abundance of data that having a wide array of
+                  charts was necessary.
+                </p>
+                <p>
+                  To handle the heavy charting needs for this app, I chose to use Apex Charts. They
+                  allowed for a wide variety of chart types while also providing the level of
+                  responsiveness I required.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex w-full flex-col gap-8 lg:w-3/4">
+          <p class="mb-4 text-3xl font-bold">Security is our # 1 Priority</p>
+          <div class="flex w-full justify-center">
+            <div class="flex w-full flex-col items-start gap-8 text-lg md:w-full">
+              <div class="flex w-full flex-col gap-8 lg:w-3/4">
+                <p>
+                  It goes without saying that Security should be any developers number one priority.
+                  Oura provides an Oauth2 Authentication flow to access users data for them.
+                </p>
+                <p>
+                  To handle this all securely I used AuthJS (formerly NextJS). It abstracts some of
+                  the complexity of the auth flow, while providing top notch security at the same
+                  time.
+                </p>
+              </div>
+              <img
+                id="filter-img"
+                src="/oAuth.png"
+                alt=""
+                class="w-full rounded-md object-scale-down shadow-lg"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="flex w-full flex-col gap-8 lg:w-3/4">
+          <p class="text-3xl font-bold">Off with his head</p>
+          <div class="flex w-full justify-center">
+            <div class="flex w-full flex-row items-center gap-8 text-lg md:w-full">
+              <div class="flex w-full flex-col gap-8 lg:w-3/4">
+                <p>
+                  Fully accessible UI components are difficult and time consuming. Since I used
+                  Tailwind for this project Headless UI was a great pairing.
+                </p>
+                <p>
+                  All the dropdowns and toggles throughout the app are unstyled Headless components
+                  underneath.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,7 +1,6 @@
 ---
 import Themes from "astro-themes";
 import Nav from "../components/Nav.astro";
-import "@fontsource/dm-sans"
 
 export interface Props {
   title: string;
@@ -17,40 +16,30 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content="Personal Portfolio Website for Zach Wagner" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/ZW.svg" />
+    <link
+      rel="preload"
+      href="/fonts/dm-sans.woff"
+      as="font"
+      type="font/woff"
+      crossorigin="anonymous"
+    />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
 
-  <body class="flex min-h-screen flex-col">
+  <body class="min-w-screen flex min-h-screen flex-col">
     <Nav />
     <main class="flex flex-grow justify-center overflow-hidden bg-slate-100 dark:bg-neutral-900">
       <slot />
     </main>
     <style is:global>
-      :root {
-        --accent: 124, 58, 237;
-        --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-      }
-      html[data-theme="light"] {
-        --color-fill: 251, 254, 251;
-        --color-text-base: 40, 39, 40;
-        --color-accent: 0, 108, 172;
-        --color-card: blue;
-        --color-card-muted: 205, 205, 205;
-        --color-border: 236, 233, 233;
-      }
-      html[data-theme="dark"] {
-        --color-fill: 47, 55, 65;
-        --color-text-base: 230, 230, 230;
-        --color-accent: 26, 217, 217;
-        --color-card: red;
-        --color-card-muted: 89, 107, 129;
-        --color-border: 59, 70, 85;
-      }
-      code {
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-          Bitstream Vera Sans Mono, Courier New, monospace;
+      @font-face {
+        font-family: "DM Sans";
+        src: url("/fonts/dm-sans.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
       }
     </style>
   </body>

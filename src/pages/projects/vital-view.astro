@@ -1,45 +1,34 @@
 ---
-import Nav from "../../components/Nav.astro";
+import { Image } from "@astrojs/image/components";
+
 import Layout from "../../layouts/Layout.astro";
-import Card from "../../components/Card.astro";
 import { Icon } from "astro-icon";
 import { clsx } from "clsx";
 
 export interface TechStack {
   name: string;
   icon: string;
-  glow: string;
+  styles: string;
 }
 
-const old = [
-  { name: "Typescript", icon: "vscode-icons:file-type-typescript-official" },
-  { name: "React", icon: "logos:react" },
-  { name: "NextJS", icon: "simple-icons:nextdotjs" },
-  { name: "AuthJS", icon: "nextAuth" },
-  { name: "TailwindCSS", icon: "logos:tailwindcss-icon" },
-  { name: "HeadlessUI", icon: "headless" },
-  { name: "SWR", icon: "logos:swr" },
-  { name: "Vercel", icon: "tabler:brand-vercel" },
-];
-
 const techStack: TechStack[] = [
-  { name: "Typescript", icon: "typescript", glow: "shadow-xl shadow-blue-200" },
-  { name: "React", icon: "react", glow: "shadow-xl shadow-sky-100" },
-  { name: "NextJS", icon: "logos:nextjs-icon", glow: "shadow-xl shadow-neutral-300 p-2" },
+  { name: "Typescript", icon: "typescript", styles: "p-2" },
+  { name: "React", icon: "logos:react", styles: "p-2" },
+  { name: "NextJS", icon: "next", styles: "p-2" },
   {
     name: "AuthJS",
     icon: "ic:twotone-shield",
-    glow: "shadow-xl shadow-neutral-100 p-2 ",
+    styles: "p-2 ",
   },
-  { name: "TailwindCSS", icon: "logos:tailwindcss-icon", glow: "shadow-xl shadow-emerald-100 p-2" },
-  { name: "HeadlessUI", icon: "headless", glow: "shadow-xl shadow-blue-100 p-2" },
-  { name: "SWR", icon: "logos:swr", glow: "shadow-xl shadow-neutral-300 p-2" },
-  { name: "Vercel", icon: "tabler:brand-vercel", glow: "shadow-xl shadow-neutral-300 p-2" },
+  { name: "TailwindCSS", icon: "logos:tailwindcss-icon", styles: "p-2" },
+  { name: "HeadlessUI", icon: "headless", styles: "p-2" },
+  { name: "SWR", icon: "logos:swr", styles: "p-2" },
+  { name: "Vercel", icon: "tabler:brand-vercel", styles: "p-2" },
 ];
 ---
 
 <Layout title="projects">
-  <div class="flex w-full max-w-7xl flex-col justify-start gap-0 overflow-auto p-8 md:p-0">
+  <div class="flex w-full max-w-7xl flex-col justify-start gap-0 overflow-auto p-8 xl:p-0">
     <section class="overflow-hidden">
       <div class="container mx-auto">
         <div class="-mx-4 flex flex-wrap items-center justify-between">
@@ -53,7 +42,7 @@ const techStack: TechStack[] = [
                     href="https://github.com/zwagnr/vital-view"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-gray-700 hover:text-gray-500">
+                    class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-neutral-700 hover:text-gray-500 dark:text-neutral-400">
                     <Icon name="mdi:github" class="w-6 h-6" />
                     <span class="ml-1 text-lg font-bold">Code</span>
                   </a>
@@ -63,7 +52,7 @@ const techStack: TechStack[] = [
                     href="https://vitalview.app/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-gray-700 hover:text-gray-500">
+                    class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-neutral-700 hover:text-gray-500 dark:text-neutral-400">
                     <Icon name="iconoir:www" class="w-6 h-6" />
                     <span class="ml-1 text-lg font-bold">Live</span>
                   </a>
@@ -80,17 +69,28 @@ const techStack: TechStack[] = [
       </div>
     </section>
     <div class="mb-16 p-4">
-      <img src="/vvPreview.png" alt="" class="w-full rounded-lg shadow-xl shadow-neutral-400" />
+      <Image
+        src="/images/vvPreview.png"
+        alt="Vital View Homepage"
+        format="webp"
+        height={1878}
+        width={3840}
+        aspectRatio="16:9"
+        fit="fill"
+        format="webp"
+        class="rounded-lg shadow-xl dark:border dark:border-neutral-600"
+      />
     </div>
     <ul
-      class="mx-auto mb-12 flex w-3/4 flex-wrap items-center justify-center gap-8 rounded-xl border p-4 shadow-lg">
+      class="mx-auto mb-12 flex w-3/4 flex-wrap items-center justify-center gap-8 rounded-xl border p-4 shadow-lg dark:border-neutral-600">
       {
         techStack.map((tech) => (
           <li class="flex items-center gap-2 p-2">
             <div
+              title={tech.name}
               class={clsx(
-                tech.glow,
-                "flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-200"
+                tech.styles,
+                "flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-200 shadow-lg dark:bg-slate-700"
               )}>
               <Icon name={tech.icon} class="h-16 w-16" />
             </div>
@@ -100,12 +100,12 @@ const techStack: TechStack[] = [
     </ul>
     <div class="w-5xl mt-8 flex flex-col gap-8">
       <div class="flex w-full flex-col items-center gap-16">
-        <div class="flex w-full flex-col gap-8">
-          <p class="text-4xl font-bold">Motivation</p>
+        <div class="flex w-full flex-col gap-8 lg:w-3/4">
+          <p class="text-3xl font-bold">Motivation</p>
           <div class="flex w-full justify-center">
-            <div class="flex w-full flex-row items-center gap-8 text-lg md:w-full">
-              <div class="flex w-full flex-row items-center justify-center gap-8">
-                <div class="flex w-1/2 flex-col gap-8">
+            <div class="flex w-full flex-col items-start gap-8 text-lg md:w-full">
+              <div class="flex w-full flex-col items-start justify-center gap-8">
+                <div class="flex w-full flex-col gap-8 lg:w-3/4">
                   <p>
                     After feeling overwhelmed with digital screens dominating my daily life, I
                     decided to switch from my Apple Watch to an Oura Ring to track my activity and
@@ -118,23 +118,15 @@ const techStack: TechStack[] = [
                     the Oura Ring.
                   </p>
                 </div>
-                <div class="w-1/2">
-                  <img
-                    id="ouraRing"
-                    src="/ouraRing.png"
-                    alt="Oura Ring"
-                    class="object-scale-down"
-                  />
-                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="flex w-full flex-col gap-8">
-          <p class="text-4xl font-bold">So Many Charts!</p>
+        <div class="flex w-full flex-col gap-8 lg:w-3/4">
+          <p class="text-3xl font-bold">So Many Charts!</p>
           <div class="flex w-full justify-center">
-            <div class="flex w-full flex-row items-center gap-8 text-lg md:w-full">
-              <div class="flex w-1/2 flex-col gap-8">
+            <div class="flex w-full flex-row items-start gap-8 text-lg md:w-full">
+              <div class="flex w-full flex-col gap-8 lg:w-3/4">
                 <p>
                   Bar, line, pie, heatmap, sparkline, and multiline charts are all used in this app.
                   The Oura Ring provides such an abundance of data that having a wide array of
@@ -149,17 +141,11 @@ const techStack: TechStack[] = [
             </div>
           </div>
         </div>
-        <div class="flex w-full flex-col gap-8">
-          <p class="mb-4 text-4xl font-bold">Security is our # 1 Priority</p>
+        <div class="flex w-full flex-col gap-8 lg:w-3/4">
+          <p class="mb-4 text-3xl font-bold">Security is our # 1 Priority</p>
           <div class="flex w-full justify-center">
-            <div class="flex w-full flex-row items-center gap-8 text-lg md:w-full">
-              <img
-                id="filter-img"
-                src="/oAuth.png"
-                alt=""
-                class="w-1/2 rounded-md object-scale-down shadow-lg"
-              />
-              <div class="flex w-1/2 flex-col gap-8">
+            <div class="flex w-full flex-col items-start gap-8 text-lg md:w-full">
+              <div class="flex w-full flex-col gap-8 lg:w-3/4">
                 <p>
                   It goes without saying that Security should be any developers number one priority.
                   Oura provides an Oauth2 Authentication flow to access users data for them.
@@ -170,14 +156,25 @@ const techStack: TechStack[] = [
                   time.
                 </p>
               </div>
+              <Image
+                src="/images/oAuth.png"
+                alt="Oauth Sign in Page"
+                format="webp"
+                height={2184}
+                width={4384}
+                aspectRatio="16:9"
+                fit="fill"
+                format="webp"
+                class="rounded-lg"
+              />
             </div>
           </div>
         </div>
-        <div class="flex w-full flex-col gap-8">
-          <p class="text-4xl font-bold">Off with his head</p>
+        <div class="flex w-full flex-col gap-8 lg:w-3/4">
+          <p class="text-3xl font-bold">Off with his head</p>
           <div class="flex w-full justify-center">
             <div class="flex w-full flex-row items-center gap-8 text-lg md:w-full">
-              <div class="flex w-1/2 flex-col gap-8">
+              <div class="flex w-full flex-col gap-8 lg:w-3/4">
                 <p>
                   Fully accessible UI components are difficult and time consuming. Since I used
                   Tailwind for this project Headless UI was a great pairing.
