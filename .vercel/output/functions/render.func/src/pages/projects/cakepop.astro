@@ -32,7 +32,7 @@ const techStack: TechStack[] = [
 ---
 
 <Layout title="projects">
-  <div class="mb-12 flex w-full max-w-7xl flex-col justify-start gap-0 overflow-auto p-8 lg:p-0">
+  <div class="mb-12 flex w-full max-w-7xl flex-col justify-start gap-0 overflow-auto p-8 xl:p-0">
     <section class="overflow-hidden">
       <div class="container mx-auto">
         <div class="-mx-4 flex flex-wrap items-center justify-between">
@@ -42,11 +42,6 @@ const techStack: TechStack[] = [
               <p class="mb-8 w-full text-lg lg:w-3/4">
                 A design system and component library built on top of Vanilla Extract, with a little
                 help from React Aria and Radix UI primatives.
-              </p>
-              <p class="mb-8 w-full text-lg lg:w-3/4">
-                All the components had to be typesafe, feature rich, and keep accessibility in mind.
-                The goal was also to push the library to NPM so that I would be able to use the
-                library in future profects.
               </p>
               <div class="flex gap-8">
                 <div class="flex">
@@ -82,7 +77,7 @@ const techStack: TechStack[] = [
     </section>
     <div class="mb-16 p-2">
       <Image
-        src="/cakepopDocs.png"
+        src="/images/cakepopDocs.png"
         alt="Cakepop Docs"
         format="webp"
         height={1867}
@@ -110,8 +105,8 @@ const techStack: TechStack[] = [
         ))
       }
     </ul>
-    <div class="mt-8 flex max-w-5xl flex-col gap-8">
-      <div class="flex w-full flex-col items-center gap-8">
+    <div class="mt-8 flex max-w-5xl flex-col">
+      <div class="flex w-full flex-col items-center gap-16">
         <div class="flex w-full flex-col gap-8 lg:w-3/4">
           <p class="text-3xl font-bold">A sweat treat</p>
           <div class="flex w-full justify-center">
@@ -143,11 +138,16 @@ const techStack: TechStack[] = [
                   CSS.
                 </p>
               </div>
-              <img
-                id=""
-                src="/ve.png"
+              <Image
+                src="/images/ve.png"
                 alt="Vanilla Extract Homepage"
-                class="w-full rounded-md object-scale-down shadow-lg"
+                format="webp"
+                height={1867}
+                width={3840}
+                aspectRatio="16:9"
+                fit="fill"
+                format="webp"
+                class="rounded-lg shadow-xl dark:border dark:border-neutral-600"
               />
             </div>
           </div>
@@ -189,11 +189,15 @@ const techStack: TechStack[] = [
           <p class="text-3xl font-bold">Run it back Turbo</p>
           <div class="flex w-full justify-center">
             <div class="flex w-full flex-col items-start gap-8 text-lg md:w-full">
-              <img
-                id="filter-img"
-                src="/graphic.png"
-                alt=""
-                class="w-full rounded-md object-scale-down lg:w-1/2"
+              <Image
+                src="/images/graphic.png"
+                alt="Three Cubes"
+                format="webp"
+                height={900}
+                width={1600}
+                aspectRatio="16:9"
+                fit="fill"
+                format="webp"
               />
               <div class="flex w-full flex-col gap-8 lg:w-3/4">
                 <p>

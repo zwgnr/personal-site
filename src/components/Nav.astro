@@ -3,13 +3,11 @@ import { Icon } from "astro-icon";
 import { clsx } from "clsx";
 ---
 
-<script is:inline src="/ThemeSwitcher.js"></script>
-
 <header class="h-fit bg-slate-100 dark:bg-neutral-900">
   <div
     class="mx-auto flex h-24 w-full max-w-7xl flex-col items-center justify-between p-8 sm:flex-row xl:px-0">
     <div class="relative flex w-full items-start justify-between sm:items-center">
-      <p class="text-lg lg:block">ZW</p>
+      <p class="text-lg text-black dark:text-white lg:block">ZW</p>
       <nav class="flex flex-col items-center sm:flex-row sm:justify-end sm:py-0" id="nav-menu">
         <button
           id="hamburger-menu"
@@ -33,7 +31,7 @@ import { clsx } from "clsx";
                 Astro.url.pathname === "/"
                   ? "border-b-2"
                   : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
-                "border-black px-3 py-2 text-md dark:border-white"
+                "border-black px-3 py-2 text-md dark:border-white text-gray-800 dark:text-gray-100"
               )}>
               Home
             </a>
@@ -45,7 +43,7 @@ import { clsx } from "clsx";
                 Astro.url.pathname === "/projects"
                   ? "border-b-2"
                   : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
-                "border-black px-3 py-2 text-md font-medium dark:border-white"
+                "border-black px-3 py-2 text-md dark:border-white text-gray-800 dark:text-gray-100"
               )}>
               Projects
             </a>
@@ -57,7 +55,7 @@ import { clsx } from "clsx";
                 Astro.url.pathname === "/about"
                   ? "border-b-2"
                   : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
-                "border-black px-3 py-2 text-md dark:border-white"
+                "border-black px-3 py-2 text-md dark:border-white text-gray-800 dark:text-gray-100"
               )}>
               About
             </a>
@@ -69,7 +67,7 @@ import { clsx } from "clsx";
                 Astro.url.pathname === "/contact"
                   ? "border-b-2"
                   : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
-                "border-black px-3 py-2 text-md font-medium dark:border-white"
+                "border-black px-3 py-2 text-md dark:border-white text-gray-800 dark:text-gray-100"
               )}>
               Contact
             </a>
@@ -78,8 +76,9 @@ import { clsx } from "clsx";
             <button
               id="theme-btn"
               title="Theme Switcher"
-              class="rounded outline-none ring-blue-500 focus-visible:ring-4 focus-visible:ring-offset-0"
-              onclick="handleThemeSwitch()">
+              class="rounded text-black outline-none ring-blue-500 focus-visible:ring-4 focus-visible:ring-offset-0 dark:text-white"
+              data-toggle-theme="dark,light"
+              data-act-class="ACTIVECLASS">
               <Icon name="ph:moon-bold" class="w-6 h-6" />
               <Icon name="ph:sun-bold" class="w-6 h-6" />
             </button>
@@ -92,6 +91,9 @@ import { clsx } from "clsx";
 
 <style lang="css">
   [astro-icon="ph:moon-bold"]:hover {
+    color: orange;
+  }
+  [astro-icon="ph:sun-bold"]:hover {
     color: orange;
   }
   [astro-icon="ph:sun-bold"],

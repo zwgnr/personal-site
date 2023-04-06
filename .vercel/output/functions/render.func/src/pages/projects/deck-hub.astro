@@ -24,6 +24,7 @@ const techStack: TechStack[] = [
     styles: "p-3",
   },
   { name: "NextJS", icon: "next", styles: "p-1" },
+  { name: "Jotai", icon: "jotai", styles: "p-2" },
   { name: "TailwindCSS", icon: "logos:tailwindcss-icon", styles: "p-2" },
   { name: "HeadlessUI", icon: "headless", styles: "p-2" },
   { name: "ChartJS", icon: "chartjs", styles: "p-1" },
@@ -83,9 +84,9 @@ const techStack: TechStack[] = [
     </section>
     <div class="mb-16 p-2">
       <Image
-        src="/deckHub.png"
+        src="/images/deckHub.png"
         alt="Deck Hub"
-        format="webp"
+        format={"webp"}
         height={2248}
         width={4384}
         aspectRatio="16:9"
@@ -95,7 +96,7 @@ const techStack: TechStack[] = [
     </div>
     <!-- ====== About Section End -->
     <ul
-      class="mx-auto mb-12 flex flex-wrap items-center justify-center gap-8 rounded-xl border p-4 shadow-lg dark:border-neutral-600">
+      class="min-w-1/2 mx-auto mb-12 flex flex-wrap items-center justify-center gap-8 rounded-xl border p-4 shadow-lg dark:border-neutral-600">
       {
         techStack.map((tech) => (
           <li class="flex items-center gap-2 p-2">
@@ -133,13 +134,35 @@ const techStack: TechStack[] = [
             </div>
           </div>
         </div>
+        <div class="flex w-full flex-col items-start gap-8 lg:w-3/4">
+          <p class="mb-4 text-3xl font-bold">Everything everywhere all at once</p>
+          <div class="flex w-full justify-center">
+            <div class="flex w-full flex-row items-center gap-8 text-lg md:w-full">
+              <div class="flex w-full flex-col gap-8 lg:w-3/4">
+                <p>
+                  There was a lot of state that needed to be consumed in many different places
+                  throughout the app. I could have just declared all the state at the highest parent
+                  component and passed it down to where it was needed. Unfortunately, this would
+                  lead to some quite ugly prop drilling.
+                </p>
+                <p>
+                  React context was an option I considered to handle global state, but it would
+                  cause a lot of unnecessary re-renders, leading to performance concerns. I came
+                  across Jotai, and quickly realized it was the perfect solution for me. Jotai
+                  handles the performance issues while providing an unbelievably simple and
+                  intuitive developer experience (DX).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="flex w-full flex-col gap-8 lg:w-3/4">
           <p class="mb-4 text-3xl font-bold">Hover Me!</p>
           <div class="flex w-full justify-center">
             <div class="flex w-full flex-col items-start gap-8 text-lg md:w-full">
               <div class="flex w-full items-start justify-center gap-8">
                 <Image
-                  src="/hoverCard.png"
+                  src="/images/hoverCard.png"
                   alt="Hover Card"
                   format="webp"
                   height={1260}
@@ -169,7 +192,7 @@ const techStack: TechStack[] = [
           <div class="flex w-full justify-start">
             <div class="flex w-full flex-col items-start gap-8 text-lg md:w-full">
               <Image
-                src="/dhFilters.png"
+                src="/images/dhFilters.png"
                 alt="Filters"
                 format="png"
                 height={800}
@@ -183,8 +206,8 @@ const techStack: TechStack[] = [
                   for me.
                 </p>
                 <p>
-                  I used React's useEffect hook to re set all filter state each time a filter was
-                  added or removed. This way the displayed cards updated correctly in real-time.
+                  I leveraged React's useEffect hook to re set all filter state each time a filter
+                  was added or removed. This way the displayed cards updated correctly in real-time.
                 </p>
               </div>
             </div>

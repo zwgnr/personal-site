@@ -1,7 +1,7 @@
 ---
-import Nav from "../../components/Nav.astro";
+import { Image } from "@astrojs/image/components";
+
 import Layout from "../../layouts/Layout.astro";
-import Card from "../../components/Card.astro";
 import { Icon } from "astro-icon";
 import { clsx } from "clsx";
 
@@ -28,7 +28,7 @@ const techStack: TechStack[] = [
 ---
 
 <Layout title="projects">
-  <div class="flex w-full max-w-7xl flex-col justify-start gap-0 overflow-auto p-8 md:p-0">
+  <div class="flex w-full max-w-7xl flex-col justify-start gap-0 overflow-auto p-8 xl:p-0">
     <section class="overflow-hidden">
       <div class="container mx-auto">
         <div class="-mx-4 flex flex-wrap items-center justify-between">
@@ -69,7 +69,17 @@ const techStack: TechStack[] = [
       </div>
     </section>
     <div class="mb-16 p-4">
-      <img src="/vvPreview.png" alt="" class="w-full rounded-lg shadow-xl" />
+      <Image
+        src="/images/vvPreview.png"
+        alt="Vital View Homepage"
+        format="webp"
+        height={1878}
+        width={3840}
+        aspectRatio="16:9"
+        fit="fill"
+        format="webp"
+        class="rounded-lg shadow-xl dark:border dark:border-neutral-600"
+      />
     </div>
     <ul
       class="mx-auto mb-12 flex w-3/4 flex-wrap items-center justify-center gap-8 rounded-xl border p-4 shadow-lg dark:border-neutral-600">
@@ -146,11 +156,16 @@ const techStack: TechStack[] = [
                   time.
                 </p>
               </div>
-              <img
-                id="filter-img"
-                src="/oAuth.png"
-                alt=""
-                class="w-full rounded-md object-scale-down shadow-lg"
+              <Image
+                src="/images/oAuth.png"
+                alt="Oauth Sign in Page"
+                format="webp"
+                height={2184}
+                width={4384}
+                aspectRatio="16:9"
+                fit="fill"
+                format="webp"
+                class="rounded-lg"
               />
             </div>
           </div>
