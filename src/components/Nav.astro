@@ -6,8 +6,8 @@ import { clsx } from "clsx";
 <header class="h-fit w-full bg-slate-100 dark:bg-neutral-900">
   <div
     class="mx-auto flex w-full max-w-7xl flex-col items-center justify-between p-8 sm:flex-row xl:px-0">
-    <div class="relative flex w-full items-start justify-between sm:items-center">
-      <p class="text-lg text-black dark:text-white lg:block">ZW</p>
+    <div class="justify-betweensm:items-center relative flex w-full items-start">
+      <p id="logo" class="pt-1 text-lg text-black dark:text-white lg:block">ZW</p>
       <nav
         class="flex w-full flex-col items-center sm:flex-row sm:justify-end sm:py-0"
         id="nav-menu">
@@ -25,7 +25,7 @@ import { clsx } from "clsx";
         </button>
         <ul
           id="menu-items"
-          class="mt-4 hidden w-32 grid-cols-2 grid-rows-4 gap-y-2 gap-x-2 sm:mt-0 sm:ml-0 sm:flex sm:w-auto sm:gap-y-0 sm:gap-x-5">
+          class="mt-4 hidden grid-cols-2 grid-rows-4 gap-y-2 gap-x-2 sm:mt-0 sm:ml-0 sm:flex sm:w-auto sm:gap-y-0 sm:gap-x-5">
           <li class="col-span-2 flex items-center justify-center">
             <a
               href="/"
@@ -117,6 +117,7 @@ import { clsx } from "clsx";
   const firstLine = document.querySelector("#first-line")?.classList;
   const secondLine = document.querySelector("#second-line ")?.classList;
   const thirdLine = document.querySelector("#third-line")?.classList;
+  const logo = document.querySelector("#logo")?.classList;
 
   menuBtn?.addEventListener("click", function () {
     const menuExpanded = menuBtn?.getAttribute("aria-expanded");
@@ -125,6 +126,7 @@ import { clsx } from "clsx";
       menuBtn?.setAttribute("aria-label", "Close Menu");
       menuItems?.remove("hidden");
       menuItems?.add("grid");
+      logo?.add("hidden");
       // icon animation
       iconContainer?.remove("flex");
       iconContainer?.add("relative");
@@ -135,7 +137,7 @@ import { clsx } from "clsx";
       menuBtn?.setAttribute("aria-expanded", "false");
       menuBtn?.setAttribute("aria-label", "Open Menu");
       menuItems?.add("hidden");
-
+      logo?.remove("hidden");
       // icon animation
       iconContainer?.add("flex");
       iconContainer?.remove("relative");
