@@ -1,5 +1,4 @@
 ---
-import Themes from "astro-themes";
 import Nav from "../components/Nav.astro";
 
 export interface Props {
@@ -15,13 +14,13 @@ const { title } = Astro.props;
     <script is:inline>
       if (localStorage.getItem("theme") === null) {
         document.documentElement.setAttribute("data-theme", "light");
-      } else document.documentElement.setAttribute("data-theme", localStorage.getItem("theme"));s
+      } else document.documentElement.setAttribute("data-theme", localStorage.getItem("theme"));
+      s;
     </script>
     <script>
       import { themeChange } from "theme-change";
       themeChange();
     </script>
-    <Themes />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content="Personal Portfolio Website for Zach Wagner" />
