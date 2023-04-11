@@ -1,5 +1,4 @@
 ---
-import { Icon } from "astro-icon";
 import Socials from "../components/socials.astro";
 import Layout from "../layouts/Layout.astro";
 import sgMail from "@sendgrid/mail";
@@ -7,18 +6,38 @@ import sgMail from "@sendgrid/mail";
 if (Astro.request.method === "POST") {
   try {
     const data = await Astro.request.formData();
-    const name = data.get("name");
-    const email = data.get("email");
-    const formMessage = data.get("message");
 
-    const message = {
-      to: "zachwagner@hey.com",
-      from: "zachwagner@hey.com",
-      subject: "New message from contact form",
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${formMessage}`,
-    };
-    sgMail.setApiKey(import.meta.env.SENDGRID_API_KEY);
-    await sgMail.send(message);
+    const token = data.get("cf-turnstile-response");
+    //const ip = Astro.request.headers.get("CF-Connecting-IP");
+
+    let formData = new FormData();
+    formData.append("secret", import.meta.env.CLOUDFLARE_SECRET);
+    //@ts-ignore
+    formData.append("response", token);
+    // formData.append("remoteip", ip);
+
+    const url = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+    const result = await fetch(url, {
+      body: formData,
+      method: "POST",
+    });
+
+    const outcome = await result.json();
+
+    if (outcome.success) {
+      const name = data.get("name");
+      const email = data.get("email");
+      const formMessage = data.get("message");
+
+      const message = {
+        to: "zachwagner@hey.com",
+        from: "zachwagner@hey.com",
+        subject: "New message from contact form",
+        text: `Name: ${name}\nEmail: ${email}\nMessage: ${formMessage}`,
+      };
+      sgMail.setApiKey(import.meta.env.SENDGRID_API_KEY);
+      await sgMail.send(message);
+    }
   } catch (error) {
     if (error instanceof Error) {
       console.error(error.message);
@@ -136,6 +155,7 @@ if (Astro.request.method === "POST") {
                 placeholder="Your Message"
                 required></textarea>
             </div>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAAD7MthwgPZ1GrD7"></div>
             <div>
               <button
                 type="submit"
