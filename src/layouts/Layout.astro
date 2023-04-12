@@ -36,10 +36,10 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
 
-  <body class="min-w-screen flex min-h-screen w-screen flex-col">
+  <body class="flex min-h-screen flex-col">
     <Nav />
     <main
-      class="flex h-full w-screen flex-1 flex-col items-center justify-start overflow-hidden bg-slate-100 dark:bg-neutral-900">
+      class="flex h-full flex-1 flex-col items-center justify-start overflow-hidden bg-slate-100 dark:bg-neutral-900">
       <slot />
     </main>
     <style is:global>
