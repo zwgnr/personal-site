@@ -1,0 +1,188 @@
+---
+import { Image } from "@astrojs/image/components";
+
+import Layout from "../../layouts/Layout.astro";
+import { Icon } from "astro-icon";
+import { clsx } from "clsx";
+
+export interface TechStack {
+  name: string;
+  icon: string;
+  styles: string;
+}
+
+const techStack: TechStack[] = [
+  { name: "Typescript", icon: "typescript", styles: "p-2" },
+  { name: "React", icon: "logos:react", styles: "p-2" },
+  {
+    name: "TailwindCSS",
+    icon: "vscode-icons:file-type-tailwind",
+    styles: "p-2",
+  },
+  { name: "React Aria Components", icon: "ic:baseline-adobe", styles: "p-2" },
+  {
+    name: "VSCode Extension",
+    icon: "vscode-icons:file-type-vscode",
+    styles: "p-2",
+  },
+  { name: "Astro", icon: "astro", styles: "p-2" },
+];
+---
+
+<Layout title="projects">
+  <div
+    class="mb-12 mt-0 flex w-full max-w-7xl flex-col justify-start gap-0 overflow-auto p-8 text-black dark:text-white lg:mt-16 xl:p-0">
+    <section class="overflow-hidden">
+      <div class="container mx-auto">
+        <div class="-mx-4 flex flex-wrap items-center justify-between">
+          <div class="w-full px-4">
+            <div class="lg:mt-0">
+              <h2 class="text-dark mb-8 text-6xl font-bold">BaseLayer</h2>
+              <p class="mb-8 w-full text-lg lg:w-3/4">
+                Re-usable multi part components built on React Aria and TailwindCSS. All powered by
+                a VScode Extension.
+              </p>
+              <div class="flex gap-8">
+                <div class="flex">
+                  <a
+                    href="https://github.com/zwgnr/BaseLayer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-neutral-700 hover:text-gray-500 dark:text-neutral-400">
+                    <Icon name="mdi:github" class="w-6 h-6" />
+                    <span class="ml-1 text-lg font-bold">Code</span>
+                  </a>
+                </div>
+                <div class="flex">
+                  <a
+                    href="https://baselayer.dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="relative inline-flex items-center justify-center rounded-br-lg border border-transparent text-sm font-medium text-neutral-700 hover:text-gray-500 dark:text-neutral-400">
+                    <Icon name="iconoir:www" class="w-6 h-6" />
+                    <span class="ml-1 text-lg font-bold">Live</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full lg:w-4/6">
+            <div class="-mx-3 flex items-center sm:-mx-4">
+              <div class="flex w-full items-center justify-center p-4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="mb-16 p-2">
+      <Image
+        src="/images/blhomepage.png"
+        alt="Cakepop Docs"
+        format="webp"
+        height={1867}
+        width={3840}
+        aspectRatio="16:9"
+        fit="fill"
+        format="webp"
+        class="rounded-lg shadow-xl dark:border dark:border-neutral-600"
+      />
+    </div>
+    <ul
+      class="mx-auto mb-12 flex flex-wrap items-center justify-center gap-8 rounded-xl border p-4 shadow-lg dark:border-neutral-600">
+      {
+        techStack.map((tech) => (
+          <li class="flex items-center gap-2 p-2">
+            <div
+              title={tech.name}
+              class={clsx(
+                tech.styles,
+                "flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-200 shadow-lg dark:bg-slate-700"
+              )}>
+              <Icon name={tech.icon} class="h-16 w-16" />
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="mt-8 flex max-w-5xl flex-col">
+      <div class="flex w-full flex-col items-center gap-16">
+        <div class="flex w-full flex-col gap-8 lg:w-3/4">
+          <p class="text-3xl font-bold">Own your UI code</p>
+          <div class="flex w-full justify-center">
+            <div class="flex w-full flex-col items-start gap-8 text-lg md:w-full">
+              <div class="flex w-full flex-col gap-8 lg:w-3/4">
+                <p>
+                  <span
+                    ><a
+                      class="underline"
+                      href="https://ui.shadcn.com/"
+                      target="_blank"
+                      rel="noopener noreferrer">Shadcn/UI</a
+                    ></span
+                  > changed the game as far as component systems are distributed. Instead of shipping
+                  components to NPM, he created a system where componets are distrubted via a CLI tool
+                  that calls an API to get the component code. I loved this concept and decided to iterate
+                  on it, this time instead of using a CLI tool, I chose a VScode extension.
+                </p>
+              </div>
+              <Image
+                src="/images/blinstall.png"
+                alt="Vanilla Extract Homepage"
+                format="webp"
+                height={903}
+                width={1197}
+                aspectRatio="16:9"
+                fit="fill"
+                format="webp"
+                class="rounded-lg shadow-xl dark:border dark:border-neutral-600"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="flex w-full flex-col gap-8 lg:w-3/4">
+          <div class="flex w-full flex-col items-center"></div>
+        </div>
+        <div class="flex w-full flex-col gap-8 lg:w-3/4">
+          <p class="text-3xl font-bold">A strong foundation</p>
+          <div class="flex w-full justify-center">
+            <div class="flex w-full flex-row items-start gap-8 text-lg md:w-full">
+              <div class="flex w-full flex-col gap-8 lg:w-3/4">
+                <p>
+                  Accessibility is something that everyone knows is important, but is often diffictult to impliment.
+                </p>
+                <p>
+                  I chose to use the robust <span
+                    ><a
+                      class="underline"
+                      href="https://react-spectrum.adobe.com/react-aria"
+                      target="_blank"
+                      rel="noopener noreferrer">React Aria Components.</a
+                    ></span
+                  > The Aria team has some great <a
+                  class="underline"
+                  href="https://react-spectrum.adobe.com/blog/index.html"
+                  target="_blank"
+                  rel="noopener noreferrer">reading</a
+                > on their philosophies and implementations.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex w-full flex-col gap-8 lg:w-3/4">
+          <p class="text-3xl font-bold">A step back</p>
+          <div class="flex w-full justify-center">
+            <div class="flex w-full flex-col items-start gap-8 text-lg md:w-full">
+              <div class="flex w-full flex-col gap-8 lg:w-3/4">
+                <p>
+                  Building the VScode extension proved a bit difficult in some ways due to the inability to consume ES modules in extensions. We take for granted modern JS tooling with libraries we use every day. Building with those contraints in mind was a welcome challenge.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+  </div>
+</Layout>
