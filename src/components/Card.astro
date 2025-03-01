@@ -1,10 +1,10 @@
 ---
-import { Icon } from "astro-icon";
+import { Image } from 'astro:assets';
 
 export interface Props {
   title: string;
   description: string;
-  img: string;
+  img: ImageMetadata;
   info: string;
   live: string;
   github: string;
@@ -18,7 +18,7 @@ const { title, description, img, info, live, github } = Astro.props;
   class="duration-400 h-80 w-full cursor-pointer rounded-xl border bg-slate-100 shadow-md transition ease-in-out dark:border-neutral-500 dark:bg-transparent sm:w-96 sm:hover:-translate-y-2 sm:hover:shadow-2xl">
   <div class="flex h-full w-full flex-col items-center justify-center p-4">
     <div class="flex h-1/2 w-full items-center justify-center">
-      <img class="h-24 w-24 translate-x-0 translate-y-0" src={img} alt="Project Logo" />
+      <Image class="h-24 w-24 translate-x-0 translate-y-0" src={img} alt="Project Logo" />
     </div>
     <div class="flex h-2/3 w-full flex-col justify-start gap-4 p-4 text-center">
       <h1 class="w-full text-3xl font-bold text-gray-900 dark:text-white">{title}</h1>

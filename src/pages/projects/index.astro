@@ -2,6 +2,9 @@
 import Nav from "../../components/Nav.astro";
 import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/Card.astro";
+import localBlImage from '../../images/base.png';
+import localDhLogo from '../../images/dhLogo.png';
+import localVvImage from '../../images/vitalview.png';
 ---
 
 <Layout title="projects">
@@ -14,7 +17,7 @@ import Card from "../../components/Card.astro";
       <Card
         title="BaseLayer"
         description="Re-usable multi part components built on React Aria and TailwindCSS. All powered by a VScode Extension."
-        img={"/images/base.png"}
+        img={localBlImage}
         info={"/projects/baselayer"}
         live={"https://baselayer.dev/"}
         github={"https://github.com/zwgnr/BaseLayer"}
@@ -22,7 +25,7 @@ import Card from "../../components/Card.astro";
       <Card
         title="Deck Hub"
         description="Parallel TCG Deck Builder"
-        img={"/images/dhLogo.png"}
+        img={localDhLogo}
         info={"/projects/deck-hub"}
         live={"https://deckhub.app/"}
         github={"https://deckhub.app/"}
@@ -30,7 +33,7 @@ import Card from "../../components/Card.astro";
       <Card
         title="Vital View"
         description="A data analytics dashboard for your Oura Ring."
-        img={"/images/vitalview.png"}
+        img={localVvImage}
         info={"/projects/vital-view"}
         live={"https://vitalview.app/"}
         github={"https://github.com/zwagnr/vital-view"}

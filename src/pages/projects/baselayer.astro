@@ -1,9 +1,10 @@
 ---
-import { Image } from "@astrojs/image/components";
-
+import { Image } from 'astro:assets';
 import Layout from "../../layouts/Layout.astro";
-import { Icon } from "astro-icon";
+import { Icon } from 'astro-icon/components'
 import { clsx } from "clsx";
+import localBlImage from '../../images/blhomepage.png';
+import localBlInstall from '../../images/blinstall.png';
 
 export interface TechStack {
   name: string;
@@ -76,14 +77,8 @@ const techStack: TechStack[] = [
     </section>
     <div class="mb-16 p-2">
       <Image
-        src="/images/blhomepage.png"
-        alt="Cakepop Docs"
-        format="webp"
-        height={1867}
-        width={3840}
-        aspectRatio="16:9"
-        fit="fill"
-        format="webp"
+        src={localBlImage}
+        alt="BaseLayer Homepage"
         class="rounded-lg shadow-xl dark:border dark:border-neutral-600"
       />
     </div>
@@ -126,14 +121,8 @@ const techStack: TechStack[] = [
                 </p>
               </div>
               <Image
-                src="/images/blinstall.png"
-                alt="Vanilla Extract Homepage"
-                format="webp"
-                height={903}
-                width={1197}
-                aspectRatio="16:9"
-                fit="fill"
-                format="webp"
+                src={localBlInstall}
+                alt="BaseLayer Install"
                 class="rounded-lg shadow-xl dark:border dark:border-neutral-600"
               />
             </div>

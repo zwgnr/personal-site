@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from 'astro-icon/components'
 import { clsx } from "clsx";
 ---
 
@@ -81,8 +81,8 @@ import { clsx } from "clsx";
               class="rounded text-black outline-none ring-blue-500 focus-visible:ring-4 focus-visible:ring-offset-0 dark:text-white"
               data-toggle-theme="dark,light"
               data-act-class="ACTIVECLASS">
-              <Icon name="ph:moon-bold" class="w-6 h-6" />
-              <Icon name="ph:sun-bold" class="w-6 h-6" />
+              <Icon name="ph:moon-bold" class="w-6 h-6 hover:text-orange-500" />
+              <Icon name="ph:sun-bold" class="w-6 h-6 hover:text-orange-500" />
             </button>
           </li>
         </ul>
@@ -92,18 +92,12 @@ import { clsx } from "clsx";
 </header>
 
 <style lang="css">
-  [astro-icon="ph:moon-bold"]:hover {
-    color: orange;
-  }
-  [astro-icon="ph:sun-bold"]:hover {
-    color: orange;
-  }
-  [astro-icon="ph:sun-bold"],
-  html[data-theme="dark"] [astro-icon="ph:moon-bold"] {
+  [data-icon="ph:sun-bold"],
+  html[data-theme="dark"] [data-icon="ph:moon-bold"] {
     display: none;
   }
-  [astro-icon="ph:moon-bold"],
-  html[data-theme="dark"] [astro-icon="ph:sun-bold"] {
+  [data-icon="ph:moon-bold"],
+  html[data-theme="dark"] [data-icon="ph:sun-bold"] {
     display: block;
   }
 </style>
