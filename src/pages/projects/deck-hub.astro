@@ -1,9 +1,11 @@
 ---
-import { Image } from "@astrojs/image/components";
-
+import { Image } from 'astro:assets';
 import Layout from "../../layouts/Layout.astro";
-import { Icon } from "astro-icon";
+import { Icon } from 'astro-icon/components'
 import { clsx } from "clsx";
+import localDeckHub from '../../images/deckHub.png';
+import localDeckHubFilters from '../../images/dhFilters.png';
+import localHoverCard from '../../images/hoverCard.png';
 
 export interface TechStack {
   name: string;
@@ -85,13 +87,8 @@ const techStack: TechStack[] = [
     </section>
     <div class="mb-16 p-2">
       <Image
-        src="/images/deckHub.png"
+        src={localDeckHub}
         alt="Deck Hub"
-        format={"webp"}
-        height={2248}
-        width={4384}
-        aspectRatio="16:9"
-        fit="fill"
         class="rounded-lg shadow-xl dark:border dark:border-neutral-600"
       />
     </div>
@@ -163,12 +160,8 @@ const techStack: TechStack[] = [
             <div class="flex w-full flex-col items-start gap-8 text-lg md:w-full">
               <div class="flex w-full items-start justify-center gap-8">
                 <Image
-                  src="/images/hoverCard.png"
+                  src={localHoverCard}
                   alt="Hover Card"
-                  format="webp"
-                  height={1260}
-                  width={3000}
-                  fit="fill"
                   class="rounded-lg shadow-xl dark:border dark:border-neutral-600"
                 />
               </div>
@@ -193,12 +186,8 @@ const techStack: TechStack[] = [
           <div class="flex w-full justify-start">
             <div class="flex w-full flex-col items-start gap-8 text-lg md:w-full">
               <Image
-                src="/images/dhFilters.png"
+                src={localDeckHubFilters}
                 alt="Filters"
-                format="png"
-                height={800}
-                width={1143}
-                fit="fill"
                 class="rounded-lg shadow-xl dark:border dark:border-neutral-600"
               />
               <div class="flex w-full flex-col gap-8 lg:w-3/4">

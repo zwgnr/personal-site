@@ -1,10 +1,11 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from 'astro:assets';
 
 import Layout from "../../layouts/Layout.astro";
-import { Icon } from "astro-icon";
+import { Icon } from 'astro-icon/components'
 import { clsx } from "clsx";
-
+import localVvImage from '../../images/vvPreview.png';
+import localOauth from '../../images/oAuth.png';
 export interface TechStack {
   name: string;
   icon: string;
@@ -71,14 +72,8 @@ const techStack: TechStack[] = [
     </section>
     <div class="mb-16 p-4">
       <Image
-        src="/images/vvPreview.png"
+        src={localVvImage}
         alt="Vital View Homepage"
-        format="webp"
-        height={1878}
-        width={3840}
-        aspectRatio="16:9"
-        fit="fill"
-        format="webp"
         class="rounded-lg shadow-xl dark:border dark:border-neutral-600"
       />
     </div>
@@ -158,14 +153,8 @@ const techStack: TechStack[] = [
                 </p>
               </div>
               <Image
-                src="/images/oAuth.png"
+                src={localOauth}
                 alt="Oauth Sign in Page"
-                format="webp"
-                height={2184}
-                width={4384}
-                aspectRatio="16:9"
-                fit="fill"
-                format="webp"
                 class="rounded-lg"
               />
             </div>

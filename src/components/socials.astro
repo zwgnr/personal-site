@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from 'astro-icon/components'
 ---
 
 <div class="flex w-full items-center justify-start py-4">
@@ -9,7 +9,7 @@ import { Icon } from "astro-icon";
     rel="noopener noreferrer"
     class="mr-4 inline-block rounded-lg text-gray-500 placeholder:text-sm focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400"
     aria-label="zwagnr Github">
-    <Icon name="tabler:brand-github" class="w-8 h-8" />
+    <Icon name="tabler:brand-github" class="w-8 h-8 hover:text-orange-500" />
   </a>
   <a
     href="https://twitter.com/zwagnr"
@@ -17,7 +17,7 @@ import { Icon } from "astro-icon";
     rel="noopener noreferrer"
     class="mr-4 inline-block rounded-lg text-sm text-gray-500 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:focus:ring-gray-700"
     aria-label="zwagnr Twitter">
-    <Icon name="tabler:brand-twitter" class="w-8 h-8" />
+    <Icon name="tabler:brand-twitter" class="w-8 h-8 hover:text-blue-500" />
   </a>
   <a
     href="https://discordapp.com/users/872289369422200853"
@@ -25,18 +25,6 @@ import { Icon } from "astro-icon";
     rel="noopener noreferrer"
     class="mr-4 inline-block rounded-lg text-sm text-gray-500 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:focus:ring-gray-700"
     aria-label="zwagnr discord">
-    <Icon name="tabler:brand-discord" class="w-8 h-8" />
+    <Icon name="tabler:brand-discord" class="w-8 h-8 hover:text-purple-500" />
   </a>
 </div>
-
-<style lang="css">
-  [astro-icon="tabler:brand-github"]:hover {
-    color: orange;
-  }
-  [astro-icon="tabler:brand-twitter"]:hover {
-    color: rgb(81, 194, 239);
-  }
-  [astro-icon="tabler:brand-discord"]:hover {
-    color: rgb(95, 58, 187);
-  }
-</style>
