@@ -1,94 +1,29 @@
 ---
-import { Icon } from 'astro-icon/components'
+import { Icon } from 'astro-icon/components';
 ---
 
-<header class="h-fit w-full bg-slate-100 dark:bg-neutral-900">
-  <div
-    class="mx-auto flex w-full max-w-7xl flex-col items-center justify-between p-8 sm:flex-row xl:px-0">
-    <div class="justify-betweensm:items-center relative flex w-full items-start">
-      <a href="/" id="logo" class="pt-1 text-lg text-black dark:text-white lg:block">ZW</a>
-      <nav
-        class="flex w-full flex-col items-center sm:flex-row sm:justify-end sm:py-0"
-        id="nav-menu">
-        <button
-          id="hamburger-menu"
-          class="focus-outline self-end p-2 sm:hidden"
-          aria-label="Open Menu"
-          aria-expanded="false"
-          aria-controls="menu-items">
-          <div id="icon-container" class="flex h-5 w-6 flex-col items-end justify-between">
-            <div class="h-0.5 w-full bg-black transition-all dark:bg-white" id="first-line"></div>
-            <div class="h-0.5 w-3/4 bg-black transition-all dark:bg-white" id="second-line"></div>
-            <div class="h-0.5 w-1/2 bg-black transition-all dark:bg-white" id="third-line"></div>
-          </div>
-        </button>
-        <ul
-          id="menu-items"
-          class="mt-4 hidden grid-cols-2 grid-rows-4 gap-y-2 gap-x-2 sm:mt-0 sm:ml-0 sm:flex sm:w-auto sm:gap-y-0 sm:gap-x-5">
-          <li class="col-span-2 flex items-center justify-center">
-            <button
-              id="theme-btn"
-              title="Theme Switcher"
-              class="rounded text-black outline-none ring-blue-500 focus-visible:ring-4 focus-visible:ring-offset-0 dark:text-white"
-              data-toggle-theme="dark,light"
-              data-act-class="ACTIVECLASS">
-              <Icon name="ph:moon-bold" class="w-6 h-6 hover:text-orange-500" />
-              <Icon name="ph:sun-bold" class="w-6 h-6 hover:text-orange-500" />
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-</header>
+<header class='h-fit w-full bg-slate-100 dark:bg-neutral-900 py-12'>
+  <nav class='justify-between flex w-full mx-auto px-12'>
+    <a href='/' id='logo' class='pt-1 text-lg text-black dark:text-white lg:block'> ZW </a>
+    <button
+      id='theme-btn'
+      title='Theme Switcher'
+      class='rounded text-black outline-none ring-blue-500 focus-visible:ring-4 focus-visible:ring-offset-0 dark:text-white'
+      data-toggle-theme='dark,light'
+      data-act-class='ACTIVECLASS'>
+      <Icon name='ph:moon-bold' class='w-6 h-6 hover:text-orange-500' />
+      <Icon name='ph:sun-bold' class='w-6 h-6 hover:text-orange-500' />
+    </button>
+  </nav>
 
-<style lang="css">
-  [data-icon="ph:sun-bold"],
-  html[data-theme="dark"] [data-icon="ph:moon-bold"] {
-    display: none;
-  }
-  [data-icon="ph:moon-bold"],
-  html[data-theme="dark"] [data-icon="ph:sun-bold"] {
-    display: block;
-  }
-</style>
-
-<script>
-  // Toggle menu
-  const menuBtn = document.querySelector("#hamburger-menu");
-  const menuItems = document.querySelector("#menu-items")?.classList;
-
-  const iconContainer = document.querySelector("#icon-container")?.classList;
-  const firstLine = document.querySelector("#first-line")?.classList;
-  const secondLine = document.querySelector("#second-line ")?.classList;
-  const thirdLine = document.querySelector("#third-line")?.classList;
-  const logo = document.querySelector("#logo")?.classList;
-
-  menuBtn?.addEventListener("click", function () {
-    const menuExpanded = menuBtn?.getAttribute("aria-expanded");
-    if (menuExpanded === "false") {
-      menuBtn?.setAttribute("aria-expanded", "true");
-      menuBtn?.setAttribute("aria-label", "Close Menu");
-      menuItems?.remove("hidden");
-      menuItems?.add("grid");
-      logo?.add("hidden");
-      // icon animation
-      iconContainer?.remove("flex");
-      iconContainer?.add("relative");
-      firstLine?.add("rotate-45", "absolute", "bottom-1/2");
-      thirdLine?.add("hidden");
-      secondLine?.add("!w-full", "-rotate-45", "absolute", "bottom-1/2");
-    } else {
-      menuBtn?.setAttribute("aria-expanded", "false");
-      menuBtn?.setAttribute("aria-label", "Open Menu");
-      menuItems?.add("hidden");
-      logo?.remove("hidden");
-      // icon animation
-      iconContainer?.add("flex");
-      iconContainer?.remove("relative");
-      firstLine?.remove("rotate-45", "absolute", "bottom-1/2");
-      thirdLine?.remove("hidden");
-      secondLine?.remove("!w-full", "-rotate-45", "absolute", "bottom-1/2");
+  <style lang='css'>
+    [data-icon='ph:sun-bold'],
+    html[data-theme='dark'] [data-icon='ph:moon-bold'] {
+      display: none;
     }
-  });
-</script>
+    [data-icon='ph:moon-bold'],
+    html[data-theme='dark'] [data-icon='ph:sun-bold'] {
+      display: block;
+    }
+  </style>
+</header>
