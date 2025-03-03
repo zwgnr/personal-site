@@ -8,13 +8,11 @@ if (Astro.request.method === "POST") {
     const data = await Astro.request.formData();
 
     const token = data.get("cf-turnstile-response");
-    //const ip = Astro.request.headers.get("CF-Connecting-IP");
 
     let formData = new FormData();
     formData.append("secret", import.meta.env.CLOUDFLARE_SECRET);
     //@ts-ignore
     formData.append("response", token);
-    // formData.append("remoteip", ip);
 
     const url = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
     const result = await fetch(url, {

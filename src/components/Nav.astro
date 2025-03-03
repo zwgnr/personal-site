@@ -1,13 +1,12 @@
 ---
 import { Icon } from 'astro-icon/components'
-import { clsx } from "clsx";
 ---
 
 <header class="h-fit w-full bg-slate-100 dark:bg-neutral-900">
   <div
     class="mx-auto flex w-full max-w-7xl flex-col items-center justify-between p-8 sm:flex-row xl:px-0">
     <div class="justify-betweensm:items-center relative flex w-full items-start">
-      <p id="logo" class="pt-1 text-lg text-black dark:text-white lg:block">ZW</p>
+      <a href="/" id="logo" class="pt-1 text-lg text-black dark:text-white lg:block">ZW</a>
       <nav
         class="flex w-full flex-col items-center sm:flex-row sm:justify-end sm:py-0"
         id="nav-menu">
@@ -26,54 +25,6 @@ import { clsx } from "clsx";
         <ul
           id="menu-items"
           class="mt-4 hidden grid-cols-2 grid-rows-4 gap-y-2 gap-x-2 sm:mt-0 sm:ml-0 sm:flex sm:w-auto sm:gap-y-0 sm:gap-x-5">
-          <li class="col-span-2 flex items-center justify-center">
-            <a
-              href="/"
-              class={clsx(
-                Astro.url.pathname === "/"
-                  ? "border-b-2"
-                  : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
-                "border-black px-3 py-2 text-md dark:border-white text-gray-800 dark:text-gray-100"
-              )}>
-              Home
-            </a>
-          </li>
-          <li class="col-span-2 flex items-center justify-center">
-            <a
-              href="/projects"
-              class={clsx(
-                Astro.url.pathname === "/projects"
-                  ? "border-b-2"
-                  : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
-                "border-black px-3 py-2 text-md dark:border-white text-gray-800 dark:text-gray-100"
-              )}>
-              Projects
-            </a>
-          </li>
-          <li class="col-span-2 flex items-center justify-center">
-            <a
-              href="/about"
-              class={clsx(
-                Astro.url.pathname === "/about"
-                  ? "border-b-2"
-                  : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
-                "border-black px-3 py-2 text-md dark:border-white text-gray-800 dark:text-gray-100"
-              )}>
-              About
-            </a>
-          </li>
-          <li class="col-span-2 flex items-center justify-center">
-            <a
-              href="/contact"
-              class={clsx(
-                Astro.url.pathname === "/contact"
-                  ? "border-b-2"
-                  : "text-gray-800 rounded-md hover:bg-slate-300 dark:text-gray-100 dark:hover:bg-slate-600",
-                "border-black px-3 py-2 text-md dark:border-white text-gray-800 dark:text-gray-100"
-              )}>
-              Contact
-            </a>
-          </li>
           <li class="col-span-2 flex items-center justify-center">
             <button
               id="theme-btn"
