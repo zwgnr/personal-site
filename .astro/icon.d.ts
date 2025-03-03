@@ -16004,6 +16004,7 @@ declare module 'virtual:astro-icon' {
 		| "logos:sninnaker"
 		| "logos:styleguidst"
 		| "logos:tux"
+<<<<<<< HEAD
 		| "material-symbols:123"
 		| "material-symbols:360"
 		| "material-symbols:10k"
@@ -32667,6 +32668,8 @@ declare module 'virtual:astro-icon' {
 		| "material-symbols:zoom-in-sharp"
 		| "material-symbols:zoom-out-map-sharp"
 		| "material-symbols:zoom-out-sharp"
+=======
+>>>>>>> main
 		| "mdi:ab-testing"
 		| "mdi:abacus"
 		| "mdi:abjad-arabic"
